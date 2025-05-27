@@ -12,6 +12,11 @@
     quick-tap-ms = <0>;
 };
 
+//snipe：1
+//スクロールレイヤー：3
+//4：数字（）
+//5：シンボル
+
 / {
     behaviors {
         // 垂直スクロール用のbehaviorの設定
@@ -38,13 +43,13 @@
 
         default_layer {
             bindings = <
-&trans   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                                &kp N6 &kp N7   &kp N8    &kp N9  &kp N0       &kp JP_MINUS
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                                 &kp Y  &kp U    &kp I     &kp O   &kp P        &kp JP_AT
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                                 &kp H  &kp J    &kp K     &kp L   &kp JP_SEMI  &kp JP_COLON
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B  &kp JP_LBKT        &kp JP_RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp JP_SLASH &kp JP_BSLH
-&kp LALT  &kp LGUI               &lt 1 LANG2     &lt 2 SPACE        &kp BSPC    &kp ENTER                         &kp JP_CARET &kp JP_YEN
-                 &tog 2 &kp ENTER                &lt 3 LANG1        &lt 1 ENTER                 &kp ENTER &tog 2
-                                                 &kp LG(C)          &kp LG(V)
+&lt 3 ESC          &kp F1            &kp F2   &kp F3   &kp F4   &kp F5                                               &kp F6 &kp F7   &kp F8    &kp F9  &kp F10             &mkp MB3
+&kp TAB            &lt 3 ESC         &kp Q  &kp E    &kp U    &kp P                                                  &kp D  &kp T    &kp R     &kp W   &mkp MB1            &mkp MB2
+&mt LEFT_SHIFT TAB &mt LEFT_SHIFT TAB     &kp O  &kp A    &kp I    &kp F                                             &kp H  &kp Y    &kp K     &kp S   &mt LEFT_SHIFT B    &kp SHIFT
+&kp LCTRL          &mt LCTRL PERIOD    &kp X     &kp C    &kp V    &kp L   &kp LC(RG(LEFT))        &kp LG(RC(RIGHT)) &kp N  &kp M    &kp G     &kp J   &mt RCTRL Z         &kp RCTRL
+&kp LALT           &kp LGUI                        &mo 1  &mo 4                                &mo 5    &kp ENTER                         &kp JP_CARET &kp JP_YEN
+           &tog 2 &kp ENTER                               &mo 3      　　　　　　　　　　　　 &lt 1 ENTER                                  &kp ENTER &tog 2
+                                                 &kp LC(C)          　　　　　　　　　　　　　　&kp LG(V)
           &mo 1  &mo 2  &mo 3                                                                   &mo 1     &mo 2   &mo 3
                                                  &mo 1    &mo 2     &mo 3  
             >;
@@ -57,11 +62,10 @@
 
         layer_1 {
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5
-                                                                    &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &studio_unlock
-&trans  &kp MINUS                   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp PLUS                                    &trans            &kp PG_UP          &kp UP_ARROW    &kp PG_DN             &trans                &kp F12  
-&trans  &kp SLASH                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp ASTERISK                                &kp HOME          &kp LEFT_ARROW     &kp DOWN_ARROW  &kp RIGHT_ARROW       &kp END               &trans  
-&trans  &mt LEFT_SHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL      &mkp MB4       &mkp MB5          &mkp MB1           &mkp MB2        &mkp MB3              &trans                &trans  
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5                                               &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &studio_unlock
+&trans  &kp F1                      &kp F2 &kp F3  &kp F4  &kp F5                                                                 &trans    &trans    &trans    &trans  &trans  &trans  
+&trans  &trans                   &trans  &trans &trans  &trans                                                                &trans   &trans    &trans    &trans  &trans   &trans  
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                                                &trans    &trans    &trans  &trans   &trans  &trans  &trans  
 &trans  &trans                                                                         &trans        &trans         &trans         &trans                                                                     &trans                &trans
                                     &trans           &trans                                          &trans         &trans                                              &trans          &trans
                                                                                                      &trans         &trans
@@ -107,10 +111,10 @@
         layer_4 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                          &trans  &trans      &trans  &trans                          &trans  &trans
+&trans  &kp N1          &kp N2            &kp N3                &kp N4     &kp N5                       &kp N6         &kp N7     &kp N8                 &kp N9             &kp N0  &trans
+&trans  &kp JP_LT  &kp JP_LBKT  &kp LS(0x25)  &kp SPACE  &kp MINUS                      &kp BACKSPACE  &kp ENTER  &kp JP_RPAR  &kp JP_RBKT  &kp JP_RT  &trans
+&trans  &kp END         &kp PAGE_DOWN     &kp DOWN              &kp LEFT   &trans  &trans      &trans  &kp DELETE     &kp RIGHT  &kp UP_ARROW           &kp PAGE_UP        &kp HOME  &trans
+&trans  &trans                          &trans  &trans      &kp GRAVE  &trans                          &trans  &trans
                 &trans  &trans                  &trans      &trans                  &trans  &trans
                                                 &trans      &trans
         &trans  &trans  &trans                                                      &trans  &trans  &trans
@@ -121,10 +125,10 @@
         layer_5 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                          &trans  &trans      &trans  &trans                          &trans  &trans
+&trans   &kp RS(JP_SLASH)  &kp AT_SIGN    &kp HASH   &kp DOLLAR     &kp PERCENT                      &kp CARET       &kp LS(SEMI)  &kp ASTERISK       &kp SLASH          &mkp MB2  &trans
+&trans  &kp COMMA      &kp JP_SEMI    &kp JP_AT     &kp RS(MINUS)  &kp MINUS                      &kp LS(SLASH)       &kp EQUAL     &kp DOUBLE_QUOTES  &kp LS(0x87)  &kp LS(0x1e)  &trans
+&trans  &kp PERIOD     &kp JP_COLON  &kp UNDER  &kp UNDER      &trans  &trans      &trans  &kp UNDERSCORE  &kp PLUS      &trans             &trans             &kp BACKSLASH  &trans
+&trans  &trans                          &trans  &mo 1       &trans  &trans                          &trans  &trans
                 &trans  &trans                  &trans      &trans                  &trans  &trans
                                                 &trans      &trans
         &trans  &trans  &trans                                                      &trans  &trans  &trans
