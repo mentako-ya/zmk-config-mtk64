@@ -16,7 +16,7 @@
                 , <&xiao_d 9 GPIO_ACTIVE_HIGH> 	
                 ;
     };
-}
+};
 
 &default_transform {
     row-offset = <7>;
