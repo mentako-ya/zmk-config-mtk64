@@ -14,14 +14,12 @@
         rows = <0>;
         events = <0>;
     };
-    
-    mtk64_physical_layout: physical_layout_0 {
-        compatible = "zmk,physical-layout";
-        display-name = "Default Layout";
-        transform = <&default_transform>;
-    };
+
 };
 
+&mtk64_physical_layout {
+    transform = <&default_transform>;
+};
 
 &default_transform {
     row-offset = <14>;
