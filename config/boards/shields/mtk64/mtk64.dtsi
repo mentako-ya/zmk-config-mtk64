@@ -118,7 +118,7 @@
                                                          RC(14,6) RC(15,6) RC(16,6)  
              >;
     };
-    
+/*
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-charlieplex";
         wakeup-source;
@@ -134,7 +134,7 @@
                 ;
 
     };
-
+ 
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         a-gpios = <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -156,4 +156,6 @@
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <10>;
     };
+*
+/
 };
