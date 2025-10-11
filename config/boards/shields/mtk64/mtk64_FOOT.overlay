@@ -3,12 +3,11 @@
 
 / {
     chosen {
+        zmk,kscan = &mock_kscan;
         zephyr,display = &oled;
-        zmk,kscan = &kscan0;
-        zmk,physical-layout = &mtk64_physical_layout;
     };
 
-    kscan0: mock_kscan_0 {
+    mock_kscan: mock_kscan_0 {
         compatible = "zmk,kscan-mock";
         columns = <0>;
         rows = <0>;
