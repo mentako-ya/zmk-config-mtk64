@@ -5,6 +5,7 @@
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &mock_kscan;
+        zmk,physical-layout = &physical_layout0;
     };
 
     mock_kscan: mock_kscan_0 {
@@ -13,7 +14,14 @@
         rows = <0>;
         events = <0>;
     };
+    
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Default Layout";
+        transform = <&default_transform>;
+    };
 };
+
 
 &default_transform {
     row-offset = <14>;
