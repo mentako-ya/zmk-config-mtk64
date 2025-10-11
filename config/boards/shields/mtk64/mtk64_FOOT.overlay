@@ -5,7 +5,7 @@
     chosen {
         zephyr,display = &oled;
         zmk,kscan = &mock_kscan;
-        zmk,physical-layout = &physical_layout0;
+        zmk,physical-layout = &mtk64_physical_layout;
     };
 
     mock_kscan: mock_kscan_0 {
@@ -15,7 +15,7 @@
         events = <0>;
     };
     
-    physical_layout0: physical_layout_0 {
+    mtk64_physical_layout: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
         transform = <&default_transform>;
