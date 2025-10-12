@@ -1,6 +1,6 @@
 #include "mtk64.dtsi"
 
-/{
+/ {
     chosen {
         zmk,kscan = &kscan0;
     };

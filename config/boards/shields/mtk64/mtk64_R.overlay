@@ -1,7 +1,7 @@
 #include "mtk64.dtsi"
 #include "mtk64_trackball.dtsi"
 
-/{
+/ {
     chosen {
         zmk,kscan = &kscan0;
     };
