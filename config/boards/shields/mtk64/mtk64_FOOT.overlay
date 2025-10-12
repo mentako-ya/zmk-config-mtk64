@@ -1,6 +1,10 @@
 #include "mtk64.dtsi"
 #include "mtk64_trackball.dtsi"
 
+&mtk64_physical_layout {
+    transform = <&default_transform>;
+};
+
 / {
     chosen {
         zmk,kscan = &mock_kscan;
