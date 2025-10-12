@@ -3,7 +3,6 @@
 
 / {
     chosen {
-        zmk,kscan = &kscan0;
         zmk,physical-layout = &mtk64_physical_layout;
     };
     
@@ -154,5 +153,14 @@
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <10>;
+    };
+};
+
+&spi0 {
+    status = "disabled";
+
+    trackball: trackball@0 {
+        status = "disabled";
+        reg = <0>;
     };
 };
