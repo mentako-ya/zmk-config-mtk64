@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../zmk-pmw3610-driver-bj"
+		},
+		{
+			"path": "../../../../../zmk-config-roBa-rk2kk"
+		}
+	],
+	"settings": {}
+}
