@@ -6,7 +6,7 @@
     };
 };
 
-&kscan0: kscan {
+&kscan0 {
     compatible = "zmk,kscan-gpio-charlieplex";
 
     interrupt-gpios = <&xiao_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
