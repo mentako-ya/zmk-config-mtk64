@@ -16,18 +16,18 @@
 
 };
 
-&mtk64_physical_layout {
-    transform = <&default_transform>;
-};
+//&mtk64_physical_layout {
+//    transform = <&default_transform>;
+//};
 
-&default_transform {
-    row-offset = <14>;
-};
+//&default_transform {
+//    row-offset = <14>;
+//};
 
 &trackball_listener {
     status = "okay";  
 };
-&xiao_serial { status = "disabled"; };
+//&xiao_serial { status = "disabled"; };
 
 //&pinctrl {
 //    i2c0_default: i2c0_default {
@@ -40,7 +40,7 @@
 &xiao_i2c {
     status = "okay";
 //    pinctrl-0 = <&i2c0_default>;
-    oled: oled@3c {
+    oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
         width = <128>;
