@@ -15,5 +15,8 @@ manifest:
     - name: zmk-rgbled-widget
       remote: mentako-ya
       revision: main
+    - name: zmk-dongle-display
+      remote: mentako-ya
+      revision: main
   self:
     path: config

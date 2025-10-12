@@ -1,5 +1,11 @@
 #include "mtk64.dtsi"
 
+/{
+    chosen {
+        zmk,kscan = &kscan0;
+    };
+};
+
 &left_encoder {
     status = "okay";
 };
