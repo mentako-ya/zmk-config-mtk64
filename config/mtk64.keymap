@@ -42,7 +42,7 @@
 
         default_layer {
             bindings = <
-&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp JP_MINUS  &kp TAB  &kp Q  &kp L  &kp Y  &kp MINUS  &kp COMMA  &kp PERIOD  &kp G  &kp K  &kp R  &kp P  &kp JP_AT  &kp LCTRL  &kp A  &kp O  &mt LEFT_SHIFT E  &mt LCTRL U  &kp I  &kp D  &mt LCTRL H  &mt LEFT_SHIFT T  &kp N  &kp S  &kp JP_COLON  &kp LSHFT  &kp F  &kp X  &kp C  &kp V  &kp SQT  &kp JP_LBKT  &kp JP_RBKT  &kp B  &kp M  &kp W  &kp J  &kp Z  &kp JP_BSLH  &kp LALT  &kp LGUI  &lt 3 SPACE  &lt 2 LANGUAGE_2  &kp BSPC  &lt 2 ENTER  &kp JP_CARET  &kp JP_YEN  &tog 0  &kp ENTER  &lt 1 LANGUAGE_1  &trans  &kp ENTER  &tog 0  &kp LEFT_ALT  &trans  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp JP_MINUS  &kp TAB  &kp Q  &kp L  &kp Y  &kp MINUS  &kp COMMA  &kp PERIOD  &kp G  &kp K  &kp R  &kp P  &kp JP_AT  &kp LCTRL  &kp A  &kp O  &mt LEFT_SHIFT E  &mt LCTRL U  &kp I  &kp D  &mt LCTRL H  &mt LEFT_SHIFT T  &kp N  &kp S  &kp JP_COLON  &kp LSHFT  &kp F  &kp X  &kp C  &kp V  &kp SQT  &kp JP_LBKT  &kp JP_RBKT  &kp B  &kp M  &kp W  &kp J  &kp Z  &kp JP_BSLH  &kp LALT  &kp LGUI  &lt 3 SPACE  &lt 2 LANGUAGE_2  &kp BSPC  &lt 2 ENTER  &kp JP_CARET  &kp JP_YEN  &tog 0  &kp ENTER  &lt 1 LANGUAGE_1  &trans  &kp ENTER  &tog 0  &mt LEFT_ALT LA(LEFT_ALT)  &trans  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0
             >;
 
             sensor-bindings = <
