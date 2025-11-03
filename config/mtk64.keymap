@@ -42,7 +42,7 @@
 
         default_layer {
             bindings = <
-&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp JP_MINUS  &kp TAB  &kp Q  &kp L  &kp Y  &kp MINUS  &kp COMMA  &kp PERIOD  &kp G  &kp K  &kp R  &kp P  &kp JP_AT  &kp LCTRL  &kp A  &kp O  &mt LEFT_SHIFT E  &mt LCTRL U  &kp I  &kp D  &mt LCTRL H  &mt LEFT_SHIFT T  &kp N  &kp S  &kp JP_COLON  &kp LSHFT  &kp F  &kp X  &kp C  &kp V  &kp SQT  &kp JP_LBKT  &kp JP_RBKT  &kp B  &kp M  &kp W  &kp J  &kp Z  &kp JP_BSLH  &kp LALT  &kp LGUI  &lt 3 SPACE  &lt 2 LANGUAGE_2  &kp BSPC  &lt 3 ENTER  &kp JP_CARET  &kp JP_YEN  &tog 0  &kp ENTER  &lt 1 LANGUAGE_1  &trans  &kp ENTER  &tog 0  &lt 2 LANGUAGE_1  &trans  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0
+&kp ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp JP_MINUS  &kp TAB  &kp Q  &kp L  &kp Y  &kp MINUS  &kp COMMA  &kp PERIOD  &kp G  &kp K  &kp R  &kp P  &kp JP_AT  &kp LCTRL  &kp A  &kp O  &mt LEFT_SHIFT E  &mt LCTRL U  &kp I  &kp D  &mt LCTRL H  &mt LEFT_SHIFT T  &kp N  &kp S  &kp JP_COLON  &kp LSHFT  &kp F  &kp X  &kp C  &kp V  &kp SQT  &kp JP_LBKT  &kp JP_RBKT  &kp B  &kp M  &kp W  &kp J  &kp Z  &kp JP_BSLH  &kp LALT  &kp LGUI  &lt 1 SPACE  &lt 2 LANGUAGE_2  &kp BSPC  &lt 2 ENTER  &kp JP_CARET  &kp JP_YEN  &tog 0  &kp ENTER  &lt 3 LANGUAGE_1  &trans  &kp ENTER  &tog 0  &lt 2 LANGUAGE_1  &trans  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0  &mo 0
             >;
 
             sensor-bindings = <
@@ -51,9 +51,9 @@
             >;
         };
 
-        layer_4 {
+        layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp F2  &kp F6  &kp F7  &kp F10  &kp F11  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LEFT_ARROW)  &kp LS(LC(TAB))  &kp LS(UP_ARROW)  &kp LC(TAB)  &kp LA(RIGHT)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LS(LEFT_ARROW)  &kp LS(DOWN)  &kp LS(RIGHT)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -63,9 +63,9 @@
             >;
         };
 
-        layer_3 {
+        layer_4 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp F2  &kp F6  &kp F7  &kp F10  &kp F11  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LA(LEFT_ARROW)  &kp LS(LC(TAB))  &kp LS(UP_ARROW)  &kp LC(TAB)  &kp LA(RIGHT)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LS(LEFT_ARROW)  &kp LS(DOWN)  &kp LS(RIGHT)  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp CARET  &kp AMPS  &kp STAR  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans  &trans  &trans  &trans  &kp SEMI  &kp GRAVE  &kp BACKSLASH  &kp EQUAL  &kp SLASH  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans  &trans  &trans  &trans  &trans  &kp COLON  &kp TILDE  &trans  &trans  &kp PIPE  &kp PLUS  &kp QMARK  &kp LEFT_BRACE  &kp RIGHT_BRACE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
