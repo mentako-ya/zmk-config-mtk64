@@ -43,7 +43,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_SCROLL";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "hold-preferred";
             tapping-term-ms = <150>;
             quick-tap-ms = <175>;
             bindings = <&mo>, <&kp>;
@@ -63,10 +63,10 @@
 &kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                                 &kp H  &kp J    &kp K     &kp L   &kp JP_SEMI  &kp JP_COLON
 &lt_s 7 LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B  &kp JP_LBKT        &kp JP_RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp JP_SLASH &kp JP_BSLH
 &lt 6 LALT  &kp LGUI               &lt 1 LANG2     &lt_q 2 SPACE        &kp BSPC    &kp ENTER                         &kp JP_CARET &kp JP_YEN
-                 &tog 2 &kp ENTER                &lt 3 LANG1        &lt 1 ENTER                 &kp ENTER &tog 2
-                                                 &kp LG(C)          &kp LG(V)
-          &mo 1  &mo 2  &mo 3                                                                   &mo 1     &mo 2   &mo 3
-                                                 &mo 1    &mo 2     &mo 3  
+                  &tog 2 &kp ENTER                &lt 3 LANG1        &lt 1 ENTER                 &kp ENTER &tog 2
+                                                  &kp LG(C)          &kp LG(V)
+        &mo 1  &mo 2  &mo 3                                                                   &mo 1     &mo 2   &mo 3
+                                                  &mo 1    &mo 2     &mo 3  
             >;
 
             sensor-bindings = <
@@ -177,6 +177,10 @@
                                                 &trans      &trans
         &trans  &trans  &trans                                                      &trans  &trans  &trans
                                                &trans &trans &trans 
+            >;
+            sensor-bindings = <
+                &scroll_left_right
+                &scroll_up_down
             >;
         };
     };
