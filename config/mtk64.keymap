@@ -41,7 +41,7 @@
         alt_right_click: new_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&mkp RCLK &kp LEFT_ALT>;
+            bindings = <&kp LEFT_ALT &mkp RCLK>;
             label = "NEW_MACRO";
         };
     };
