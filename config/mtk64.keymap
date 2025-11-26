@@ -37,6 +37,15 @@
 };
 
 / {
+    macros {
+        new_macro: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_ALT &mkp RCLK>;
+            label = "NEW_MACRO";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -59,7 +68,7 @@
 
         layer_5 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp NUMBER_6  &kp N7  &kp N8  &kp NUMBER_9  &kp N0  &trans  &trans  &kp ESCAPE  &mkp LCLK  &trans  &mkp RCLK  &mkp RCLK  &trans  &mkp LCLK  &kp UP_ARROW  &mkp RCLK  &kp PRINTSCREEN  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &kp DELETE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp NUMBER_6  &kp N7  &kp N8  &kp NUMBER_9  &kp N0  &trans  &trans  &kp ESCAPE  &mkp LCLK  &trans  &mkp RCLK  &new_macro  &trans  &mkp LCLK  &kp UP_ARROW  &mkp RCLK  &kp PRINTSCREEN  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans  &trans  &trans  &trans  &trans  &trans  &kp DELETE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
