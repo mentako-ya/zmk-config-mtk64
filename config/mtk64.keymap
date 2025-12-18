@@ -17,11 +17,13 @@
         // 垂直スクロール用のbehaviorの設定
         // 水平スクロール用のbehaviorの設定
 
-        scroll_left_right: scroll_left_right {
+        scroll_left_right: scroll_left_right_node {
             compatible = "zmk,behavior-sensor-rotate";
             label = "SCROLL_LEFT_RIGHT";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+
+            tap-ms = <20>;
         };
 
         scroll_up_down: scroll_up_down {
@@ -29,6 +31,8 @@
             label = "SCROLL_UP_DOWN";
             #sensor-binding-cells = <0>;
             bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
+            tap-ms = <20>;
         };
     };
 };
