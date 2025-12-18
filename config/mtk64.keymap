@@ -38,15 +38,6 @@
 };
 
 / {
-    macros {
-        alt_right_click: new_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&sk LEFT_ALT &mkp RCLK>;
-            label = "NEW_MACRO";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
