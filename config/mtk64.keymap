@@ -12,7 +12,7 @@
         // 垂直スクロール用のbehaviorの設定
         // 水平スクロール用のbehaviorの設定
 
-        scroll_left_right: scroll_left_right_node {
+        scroll_left_right: scroll_left_right {
             compatible = "zmk,behavior-sensor-rotate";
             label = "SCROLL_LEFT_RIGHT";
             #sensor-binding-cells = <0>;
