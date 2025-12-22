@@ -7,11 +7,6 @@
 
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 
-&mt {
-    flavor = "balanced";
-    quick-tap-ms = <0>;
-};
-
 / {
     behaviors {
         // 垂直スクロール用のbehaviorの設定
