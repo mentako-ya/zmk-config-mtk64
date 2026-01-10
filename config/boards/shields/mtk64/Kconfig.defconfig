@@ -1,7 +1,7 @@
 if SHIELD_MTK64_R
 
 config ZMK_KEYBOARD_NAME
-    default "mtk64_R"
+    default "mtk64"
 
 config ZMK_SPLIT
     default y

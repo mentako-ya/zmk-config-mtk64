@@ -81,12 +81,12 @@ https://github.com/caksoylar/zmk-rgbled-widget
 3. ビルドしたファームウェアをダウンロードして解凍します。
 
     ```
-    mtk64_R rgbled_adapter-seeeduino_xiao_ble-zmk.uf2       右手用ファームウェア
-    mtk64_L rgbled_adapter-seeeduino_xiao_ble-zmk.uf2       左手用ファームウェア
-    mtk64_FOOT rgbled_adapter-seeeduino_xiao_ble-zmk.uf2    フットスイッチ用ファームウェア
-    settings_reset-seeeduino_xiao_ble-zmk.uf2               リセット用ファイル
+    mtk64_R rgbled_adapter-xiao_ble-zmk.uf2       右手用ファームウェア
+    mtk64_L rgbled_adapter-xiao_ble-zmk.uf2       左手用ファームウェア
+    mtk64_FOOT rgbled_adapter-xiao_ble-zmk.uf2    フットスイッチ用ファームウェア
+    settings_reset-xiao_ble-zmk.uf2               リセット用ファイル
     ```
 
 4. USBケーブルでキーボードを接続して、リセットスイッチをダブルクリックすると、リムーバブルディスク"XIAO-SENSE"として認識されます。
 
-    まず　settings_reset-seeeduino_xiao_ble-zmk.uf2　をリムーバブルディスクに書き込み、再度リセットスイッチをダブルクリックして、新しいファームウェアを書き込んでください。
+    まず　settings_reset-xiao_ble-zmk.uf2　をリムーバブルディスクに書き込み、再度リセットスイッチをダブルクリックして、新しいファームウェアを書き込んでください。
