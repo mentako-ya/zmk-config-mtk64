@@ -61,13 +61,13 @@
 
         layer_2 {
             bindings = <
-&kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp NUMBER_6  &kp N7  &kp N8  &kp N9  &kp N0  &kp  &kp  &kp ESCAPE  &mkp LCLK  &kp  &mkp RCLK  &kp  &kp  &mkp LCLK  &kp UP_ARROW  &mkp RCLK  &kp PSCRN  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp
+&kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5  &kp NUMBER_6  &kp N7  &kp N8  &kp N9  &kp N0  &kp  &kp  &kp ESCAPE  &mkp LCLK  &kp  &mkp RCLK  &kp  &kp  &mkp LCLK  &kp UP_ARROW  &mkp RCLK  &kp PSCRN  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &kp  &kp  &kp  &kp  &kp  &kp  &kp DELETE  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp F8  &kp F9  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp F2  &kp F6  &kp F7  &kp F10  &kp F11  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp LA(LEFT)  &kp LS(LC(TAB))  &kp LS(UP_ARROW)  &kp LC(TAB)  &kp LA(RIGHT)  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp LS(LEFT)  &kp LS(DOWN)  &kp LS(RIGHT)  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp  &kp
             >;
         };
     };
