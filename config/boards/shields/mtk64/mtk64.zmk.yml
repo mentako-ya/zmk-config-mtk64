@@ -3,6 +3,6 @@ id: mtk64
 name: mtk64
 type: shield
 url: https://github.com/mentako-ya/zmk-config-mtk64
-requires: [seeeduino_xiao_ble]
+requires: [xiao_ble]
 features:
   - keys
