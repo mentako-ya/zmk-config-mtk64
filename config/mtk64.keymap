@@ -43,6 +43,23 @@
         };
     };
 
+    behaviors {
+        // 垂直スクロール用のbehaviorの設定
+        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+            tap-ms = <20>; // スクロールのタップ時間
+        };
+        // 水平スクロール用のbehaviorの設定
+        scroll_left_right: behavior_sensor_rotate_mouse_wheel_left_right {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+            tap-ms = <20>; // スクロールのタップ時間
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -98,7 +115,7 @@
             >;
 
             sensor-bindings = <
-                &inc_dec_kp TAB LC(TAB) 
+                &inc_dec_kp TAB LS(TAB) 
                 &inc_dec_kp PG_UP PG_DN
             >;
         };
