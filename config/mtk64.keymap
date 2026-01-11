@@ -76,25 +76,25 @@
         combo_- {
             bindings = <&kp MINUS>;
             key-positions = <9 10>;
-            layers = <0 3>;
+            layers = <0 9>;
         };
 
         combo_equal {
             bindings = <&kp EQUAL>;
             key-positions = <21 22>;
-            layers = <0 1 3>;
+            layers = <0 9 7>;
         };
 
         combo_bslash {
             bindings = <&kp BACKSLASH>;
             key-positions = <33 34>;
-            layers = <0 1 3>;
+            layers = <0 9 7>;
         };
 
         combo_sqt {
             bindings = <&kp SQT>;
             key-positions = <47 48>;
-            layers = <0 3>;
+            layers = <0 9>;
         };
 
         combo_delete {
@@ -125,37 +125,37 @@
         combo_d_slash {
             bindings = <&kp SLASH>;
             key-positions = <9 10>;
-            layers = <1>;
+            layers = <7>;
         };
 
         combo_d_minus {
             bindings = <&kp MINUS>;
             key-positions = <48 47>;
-            layers = <1>;
+            layers = <7>;
         };
 
         combo_o_slash {
             bindings = <&kp SLASH>;
             key-positions = <10 9>;
-            layers = <2>;
+            layers = <8>;
         };
 
         combo_o_equal {
             bindings = <&kp EQUAL>;
             key-positions = <22 21>;
-            layers = <2>;
+            layers = <8>;
         };
 
         combo_o_sqt {
             bindings = <&kp SQT>;
             key-positions = <34 33>;
-            layers = <2>;
+            layers = <8>;
         };
 
         combo_o_nub {
             bindings = <&kp NON_US_BACKSLASH>;
             key-positions = <48 47>;
-            layers = <2>;
+            layers = <8>;
         };
     };
 
@@ -164,43 +164,13 @@
 
         default_layer {
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 1  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &to 2  &kp CAPSLOCK  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMICOLON  &to 3  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 4 LANG5  &lt 5 SPACE  &lt 5 BACKSPACE  &lt 4 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 9  &kp ENTER  &lt 7 LANG1  &lt 7 ENTER  &kp ENTER  &tog 5  &kp LANG5  &kp LANG5  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 7  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &to 8  &kp CAPSLOCK  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMICOLON  &to 9  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
             >;
 
             sensor-bindings = <
                 &inc_dec_kp LEFT_ARROW RIGHT_ARROW
                 &inc_dec_kp UP_ARROW   DOWN_ARROW
             >;
-        };
-
-        layer_dvorak {
-            bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp APOS  &kp COMMA  &kp DOT  &kp P  &kp Y  &kp F  &kp G  &kp C  &kp R  &kp L  &to 2  &kp CAPSLOCK  &kp A  &kp O  &kp E  &kp U  &kp I  &kp D  &kp H  &kp T  &kp N  &kp S  &to 3  &kp LSHIFT  &kp SEMI  &kp Q  &kp J  &kp K  &kp X  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp B  &kp M  &kp W  &kp V  &kp Z  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 4 LANG5  &lt 5 SPACE  &lt 5 BACKSPACE  &lt 4 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 9  &kp ENTER  &lt 7 LANG1  &lt 7 ENTER  &kp ENTER  &tog 5  &kp LANG5  &kp LANG5  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
-                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
-        };
-
-        layer_ohnishi {
-            bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp Q  &kp L  &kp U  &kp COMMA  &kp DOT  &kp F  &kp W  &kp R  &kp Y  &kp P  &to 1  &kp CAPSLOCK  &kp E  &kp I  &kp A  &kp O  &kp MINUS  &kp K  &kp T  &kp N  &kp S  &kp H  &to 3  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp SEMI  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp G  &kp D  &kp M  &kp J  &kp B  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 4 LANG5  &lt 5 SPACE  &lt 5 BACKSPACE  &lt 4 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 9  &kp ENTER  &lt 7 LANG1  &lt 7 ENTER  &kp ENTER  &tog 5  &kp LANG5  &kp LANG5  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
-                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
-        };
-
-        layer_astarte {
-            bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp Q  &kp P  &kp U  &kp Y  &kp COMMA  &kp J  &kp D  &kp H  &kp G  &kp W  &to 1  &kp CAPSLOCK  &kp I  &kp O  &kp E  &kp A  &kp DOT  &kp K  &kp T  &kp N  &kp S  &kp R  &to 2  &kp LSHIFT  &kp Z  &kp X  &kp FSLH  &kp C  &kp SEMI  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp M  &kp L  &kp F  &kp B  &kp V  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 4 LANG5  &lt 5 SPACE  &lt 5 BACKSPACE  &lt 4 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 9  &kp ENTER  &lt 7 LANG1  &lt 7 ENTER  &kp ENTER  &tog 5  &kp LANG5  &kp LANG5  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7  &mo 4  &mo 5  &mo 7
-            >;
-
-            sensor-bindings =
-                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
-                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
         };
 
         layer_function_arrow {
@@ -217,12 +187,6 @@
             sensor-bindings = <
                 &inc_dec_kp TAB LS(TAB) 
                 &inc_dec_kp PG_UP PG_DN
-            >;
-        };
-
-        layer_6 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &mkp MB1  &mkp MB2  &mkp MB3  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -243,19 +207,55 @@
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5  &bt BT_PRV  &bt BT_NXT  &bt BT_CLR  &bt BT_CLR_ALL  &trans  &trans  &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &bt BT_DISC 5  &out OUT_BLE  &out OUT_USB  &trans  &trans  &trans  &trans  &trans  &bl BL_ON  &bl BL_INC  &bl BL_CYCLE  &trans  &trans  &out OUT_TOG  &trans  &trans  &trans  &trans  &trans  &trans  &bl BL_OFF  &bl BL_DEC  &bl BL_SET 50  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bl BL_TOG  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
+
+        layer_6 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB4  &mkp MB5  &mkp MB1  &mkp MB2  &mkp MB3  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer_dvorak {
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp APOS  &kp COMMA  &kp DOT  &kp P  &kp Y  &kp F  &kp G  &kp C  &kp R  &kp L  &to 8  &kp CAPSLOCK  &kp A  &kp O  &kp E  &kp U  &kp I  &kp D  &kp H  &kp T  &kp N  &kp S  &to 9  &kp LSHIFT  &kp SEMI  &kp Q  &kp J  &kp K  &kp X  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp B  &kp M  &kp W  &kp V  &kp Z  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
+                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+        };
+
+        layer_ohnishi {
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp Q  &kp L  &kp U  &kp COMMA  &kp DOT  &kp F  &kp W  &kp R  &kp Y  &kp P  &to 7  &kp CAPSLOCK  &kp E  &kp I  &kp A  &kp O  &kp MINUS  &kp K  &kp T  &kp N  &kp S  &kp H  &to 9  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp SEMI  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp G  &kp D  &kp M  &kp J  &kp B  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
+                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+        };
+
+        layer_astarte {
+            bindings = <
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &to 0  &kp TAB  &kp Q  &kp P  &kp U  &kp Y  &kp COMMA  &kp J  &kp D  &kp H  &kp G  &kp W  &to 7  &kp CAPSLOCK  &kp I  &kp O  &kp E  &kp A  &kp DOT  &kp K  &kp T  &kp N  &kp S  &kp R  &to 8  &kp LSHIFT  &kp Z  &kp X  &kp FSLH  &kp C  &kp SEMI  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp M  &kp L  &kp F  &kp B  &kp V  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LEFT_ARROW RIGHT_ARROW>,
+                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+        };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
         l1_l2_l4 {
-            if-layers = <4 5>;
-            then-layer = <8>;
+            if-layers = <1 2>;
+            then-layer = <4>;
         };
 
         l1_l3_l5 {
-            if-layers = <4 7>;
-            then-layer = <9>;
+            if-layers = <1 3>;
+            then-layer = <5>;
         };
     };
 };
