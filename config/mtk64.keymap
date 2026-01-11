@@ -134,7 +134,7 @@
 
         default_layer {
             bindings = <
-&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans  &trans  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &trans  &trans  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMICOLON  &trans  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp DELETE  &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp I  &kp O  &kp P  &kp BACKSPACE  &kp CAPSLOCK  &kp A  &kp S  &kp D  &kp F  &kp G  &kp H  &kp J  &kp K  &kp L  &kp SEMICOLON  &kp ENTER  &kp LSHIFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &mt LEFT_GUI LEFT_BRACKET  &mt RIGHT_GUI RIGHT_BRACKET  &kp N  &kp M  &kp COMMA  &kp PERIOD  &kp SLASH  &kp RSHIFT  &kp LEFT_CONTROL  &kp LEFT_ALT  &lt 1 LANG5  &lt 2 SPACE  &lt 2 BACKSPACE  &lt 1 ENTER  &kp RIGHT_ALT  &kp RIGHT_CONTROL  &tog 5  &kp ENTER  &lt 3 LANG1  &lt 3 ENTER  &kp ENTER  &tog 2  &kp LANG5  &kp LANG5  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3  &mo 1  &mo 2  &mo 3
             >;
 
             sensor-bindings = <
