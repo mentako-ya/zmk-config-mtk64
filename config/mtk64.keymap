@@ -115,6 +115,18 @@
             key-positions = <34 35>;
             layers = <1>;
         };
+
+        combo_tab {
+            bindings = <&kp TAB>;
+            key-positions = <12 13>;
+            layers = <1>;
+        };
+
+        combo_caps {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <24 25>;
+            layers = <1>;
+        };
     };
 
     keymap {
