@@ -1,5 +1,13 @@
+#include "mtk64.dtsi"
 #include "mtk64_trackball.dtsi"
+
+&default_transform {
+    row-offset = <14>;
+};
 
 &trackball_listener {
     status = "okay";  
 };
+
+//&xiao_serial { status = "disabled"; };
+
