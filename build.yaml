@@ -22,9 +22,11 @@ include:
    shield: mtk64_R rgbled_adapter
  - board: xiao_ble
    shield: mtk64_L rgbled_adapter
- - board: xiao_ble
-   shield: mtk64_DONGLE rgbled_adapter
+ - board: mdbt50q_rx
+   shield: mtk64_DONGLE
    snippet: studio-rpc-usb-uart
    cmake-args: -DCONFIG_ZMK_STUDIO=y
  - board: xiao_ble
+   shield: settings_reset
+ - board: mdbt50q_rx
    shield: settings_reset
