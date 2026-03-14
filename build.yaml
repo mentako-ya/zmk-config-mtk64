@@ -24,9 +24,10 @@ include:
    shield: mtk64_L rgbled_adapter
  - board: mdbt50q_rx//zmk
    shield: mtk64_DONGLE
+   cmake-args: -DCONFIG_BUILD_OUTPUT_UF2=y -DCONFIG_ZMK_STUDIO=y
    snippet: studio-rpc-usb-uart
-   cmake-args: -DCONFIG_ZMK_STUDIO=y
  - board: xiao_ble//zmk
    shield: settings_reset
  - board: mdbt50q_rx//zmk
    shield: settings_reset
+   cmake-args: -DCONFIG_BUILD_OUTPUT_UF2=y
