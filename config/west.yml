@@ -24,7 +24,7 @@ manifest:
       remote: caksoylar
       revision: main
     - name: zmk-component-raytac-dongle
-      remote: mentako-ya
-      revision: main
+      remote: rschenk
+      revision: v4.0
   self:
     path: config
