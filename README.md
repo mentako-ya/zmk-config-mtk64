@@ -35,36 +35,49 @@ https://github.com/caksoylar/zmk-rgbled-widget
 - レイヤ−３ スクロールモード　         トラックボールでスクロール
 - レイヤ−６ オートマウスレーイヤー　　　右手キーボードはマウスボタン操作用マッピング　オートマウスレイヤ動作時の遷移先　         
 
-## 各種Rev3ブランチについて
-キーボードの構成に応じたブランチのソースを使用してください。
+## 各種Rev3ファームウェアおよびブランチについて
+キーボードのハードウェア構成に応じたファームウェア（ZIP）およびソースコードブランチを使用してください。
 
-### 左右構成用ファームウェアブランチ
+### 1. 左右構成用（直接PC接続）
+* **ファームウェア**: [mtk64ebt_Right_Left.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left.zip)
+* **ソースコード**: [right_left_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_rev3)
+* **説明**: ドングルを使用せず、右手側をセントラル（親機）としてPCとBluetooth直接接続して使用する標準構成です。
 
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_rev3
+### 2. 左右＋フットスイッチ無線化モジュール用
+* **ファームウェア**: [mtk64ebt_Right_Left_Foot.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Foot.zip)
+* **ソースコード**: [right_left_foot_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_foot_rev3)
+* **説明**: 左右キーボードに加え、無線フットスイッチモジュールを組み合わせて使用する構成です。
 
-### 左右＋フットスイッチ無線化モジュール用ブランチ
+### 3. 左右＋ドングルモジュール用（画面なし）
+* **ファームウェア**: [mtk64ebt_Right_Left_Dongle.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle.zip)
+* **ソースコード**: [right_left_dongle_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle_rev3)
+* **説明**: [Seeed Studio XIAO BLE](https://jp.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html) をドングル親機として使用する構成です。解凍したファイルのドングル用ファームウェアをドングルに書き込んでください。
 
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_foot_rev3
+### 4. 左右＋ドングルモジュールOLED用
+* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_display.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_display.zip)
+* **ソースコード**: [right_left_dongle-display_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_rev3)
+* **説明**: OLEDディスプレイ付きドングル親機を使用する構成です。解凍したファイルのドングル用ファームウェアをドングルに書き込んでください。
 
-### 左右＋ドングルモジュール用ブランチ
+### 5. 左右＋ドングルモジュールOLED＋フットスイッチ用
+* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_disp_foot.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_disp_foot.zip)
+* **ソースコード**: [right_left_dongle-display_foot_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_foot_rev3)
+* **説明**: OLEDディスプレイ付きドングル親機に、左右キーボードおよび無線フットスイッチを接続して使用する構成です。
 
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle_rev3
+### 6. 左ボール右エンコーダー用
+* **ファームウェア**: [mtk64ebt_Right_Left_leftball.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_leftball.zip)
+* **ソースコード**: [right_left_left-ball_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_left-ball_rev3)
+* **説明**: 左手側にトラックボール、右手側にロータリーエンコーダーを配置する構成です。
 
-### 左右＋ドングルモジュールOLED用ブランチ
+### 7. 左ボール右エンコーダー＋ドングルモジュールOLED用
+* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_disp_leftball.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_disp_leftball.zip)
+* **ソースコード**: [right_left_dongle-display_left-ball_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_left-ball_rev3)
+* **説明**: 左ボール右エンコーダー構成で、OLEDディスプレイ付きドングル親機を介してPCと接続する構成です。
 
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_rev3
+### 8. 左右＋ドングルモジュール(RAYTAC-MDBT50Q-RX)用
+* **ファームウェア**: [mtk64ebt_Right_Left_Dongle-mdbt50q_rx.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle-mdbt50q_rx.zip)
+* **ソースコード**: [right_left_dongle-mdbt50q_rx_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-mdbt50q_rx_rev3)
+* **説明**: [RAYTAC-MDBT50Q-RX](https://www.switch-science.com/products/5531) をドングルとして使用するファームウェアです。
 
-### 左右＋ドングルモジュールOLED＋フットスイッチ無線化モジュール用ブランチ
-
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_foot_rev3
-
-### 左ボール右エンコーダー＋ドングルモジュールOLED用ブランチ
-
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_left-ball_rev3
-
-### 左右＋ドングルモジュール(MDBT50Q-RX)用ブランチ
-
-https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-mdbt50q_rx_rev3
 
 ## フォークとカスタマイズ
 リポジトリをフォークして、キーマップや各種機能のカスタマイズにご使用ください。
