@@ -30,7 +30,7 @@ manifest:
       revision: main
     - name: zmk-dongle-display
       remote: mentako-ya
-      revision: mentako_esb
+      revision: mtk64_rev4
     - name: zmk-feature-split-esb
       remote: badjeff
       revision: main

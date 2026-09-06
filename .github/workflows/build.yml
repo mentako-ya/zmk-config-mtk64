@@ -21,32 +21,98 @@ jobs:
       - name: Create release zips
         run: |
           cd firmware
-          # 1. Right + Left (Direct connection)
+
+          # ====================================================================
+          # パッケージング処理: 各利用シーンに応じた ZIP アーカイブを作成
+          # ====================================================================
+
+          # --------------------------------------------------------------------
+          # パッケージ 1: 直接PC接続 (右手 Central + 左手 Peripheral)
+          # 【役割・構成】
+          # - ドングルを使用せず、右手（mtk64_R）をBLE CentralとしてPCと直接接続する標準構成。
+          # - 右手 (mtk64_R.uf2): BLE Central (PCとBLE/USB接続、左手とBLE Split接続、ZMK Studio対応)
+          # - 左手 (mtk64_L.uf2): BLE Peripheral (右手へBLE Split送信)
+          # - 初期化用 (settings_reset.uf2): BLEペアリング不調時のリセット用
+          # --------------------------------------------------------------------
           if [ -f "mtk64_R.uf2" ] && [ -f "mtk64_L.uf2" ]; then
             zip -q "../mtk64ebt_Right_Left.zip" mtk64_R.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
           fi
-          # 2. Right + Left + Foot
-          if [ -f "mtk64_R.uf2" ] && [ -f "mtk64_L.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
-            zip -q "../mtk64ebt_Right_Left_Foot.zip" mtk64_R.uf2 mtk64_L.uf2 mtk64_FOOT.uf2 settings_reset.uf2 2>/dev/null || true
+
+          # --------------------------------------------------------------------
+          # パッケージ 2: 直接PC接続 + フットスイッチ (右手 Central + 左手/フット Peripheral)
+          # 【役割・構成】
+          # - パッケージ 1 にフットスイッチ（mtk64_FOOT.uf2）を追加した直接接続構成。
+          # - 右手 (mtk64_R.uf2): BLE Central（接続枠=2 で左手＋フットの同時接続に対応）
+          # - 左手 (mtk64_L.uf2): BLE Peripheral (右手へBLE Split送信)
+          # - フット (mtk64_FOOT.uf2): BLE Peripheral (右手へBLE Split送信)
+          # --------------------------------------------------------------------
+          if [ -f "mtk64_R_foot.uf2" ] && [ -f "mtk64_L.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
+            mkdir -p pkg_foot
+            cp mtk64_R_foot.uf2 pkg_foot/mtk64_R.uf2
+            cp mtk64_L.uf2 pkg_foot/
+            cp mtk64_FOOT.uf2 pkg_foot/
+            cp settings_reset.uf2 pkg_foot/ 2>/dev/null || true
+            (cd pkg_foot && zip -q "../../mtk64ebt_Right_Left_Foot.zip" *.uf2)
+            rm -rf pkg_foot
           fi
-          # 3. Right + Left + Dongle (no OLED)
-          if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ]; then
-            zip -q "../mtk64ebt_Right_Left_Dongle.zip" mtk64_DONGLE.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
+
+          # --------------------------------------------------------------------
+          # パッケージ 3: ドングル接続 (ドングル Central + 左右手 1000Hz ESB Peripheral)
+          # 【役割・構成】
+          # - 専用ドングルをPCにUSB接続し、左右手と1000Hz超低遅延ESB通信を行う構成（OLEDなし）。
+          # - ドングル (mtk64_DONGLE.uf2): ESB Central (PCとUSB接続、ZMK Studio対応)
+          # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
+          # - 左手 (mtk64_L_dongle.uf2): ESB Peripheral ID:1 (エンコーダー＋キー、1000Hz ESB送信)
+          # --------------------------------------------------------------------
+          if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle.zip" mtk64_DONGLE.uf2 mtk64_R_dongle.uf2 mtk64_L_dongle.uf2 settings_reset.uf2 2>/dev/null || true
           fi
-          # 4. Right + Left + Dongle (with OLED display)
-          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ]; then
-            zip -q "../mtk64ebt_Right_Left_Dongle_display.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
+
+          # --------------------------------------------------------------------
+          # パッケージ 4: ドングル接続 (OLED付きドングル Central + 左右手 1000Hz ESB Peripheral)
+          # 【役割・構成】
+          # - OLEDディスプレイ付きドングルを使用する最も推奨されるドングル構成。
+          # - ドングル (mtk64_DONGLE_display.uf2): ESB Central (OLED表示: レイヤー/BongoCat/WPM/モディファイア)
+          # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
+          # - 左手 (mtk64_L_dongle.uf2): ESB Peripheral ID:1 (エンコーダー＋キー、1000Hz ESB送信)
+          # --------------------------------------------------------------------
+          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle_display.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L_dongle.uf2 settings_reset.uf2 2>/dev/null || true
           fi
-          # 5. Right + Left + Dongle (with OLED) + Foot
-          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
-            zip -q "../mtk64ebt_Right_Left_Dongle_disp_foot.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 mtk64_FOOT.uf2 settings_reset.uf2 2>/dev/null || true
+
+          # --------------------------------------------------------------------
+          # パッケージ 5: ドングル接続 + フットスイッチ (OLED付きドングル + 左右手 + フット)
+          # 【役割・構成】
+          # - パッケージ 4 にフットスイッチ（mtk64_FOOT.uf2）を追加したフル構成。
+          # - ドングル (mtk64_DONGLE_display.uf2): ESB Central
+          # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (1000Hz ESB送信)
+          # - 左手 (mtk64_L_dongle.uf2): ESB Peripheral ID:1 (1000Hz ESB送信)
+          # - フット (mtk64_FOOT.uf2): ESB Peripheral ID:3 (1000Hz ESB送信)
+          # --------------------------------------------------------------------
+          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ] && [ -f "mtk64_FOOT_dongle.uf2" ]; then
+            mkdir -p pkg_dongle_foot
+            cp mtk64_DONGLE_display.uf2 pkg_dongle_foot/
+            cp mtk64_R_dongle.uf2 pkg_dongle_foot/
+            cp mtk64_L_dongle.uf2 pkg_dongle_foot/
+            cp mtk64_FOOT_dongle.uf2 pkg_dongle_foot/mtk64_FOOT.uf2
+            cp settings_reset.uf2 pkg_dongle_foot/ 2>/dev/null || true
+            (cd pkg_dongle_foot && zip -q "../../mtk64ebt_Right_Left_Dongle_disp_foot.zip" *.uf2)
+            rm -rf pkg_dongle_foot
           fi
-          # 6. Left-ball + Right-encoder + Dongle (with OLED)
+
+
+          # --------------------------------------------------------------------
+          # パッケージ 6: 変則構成 (左手ボール / 右手エンコーダー + OLED付きドングル)
+          # 【役割・構成】
+          # - 左手トラックボール、右手エンコーダーの物理カスタマイズ用構成。
+          # - ドングル (mtk64_DONGLE_display.uf2): ESB Central
+          # - 左手 (mtk64_L_leftball.uf2): ESB Peripheral ID:1 (トラックボール＋キー、1000Hz ESB送信)
+          # - 右手 (mtk64_R_leftball.uf2): ESB Peripheral ID:2 (エンコーダー＋キー、1000Hz ESB送信)
+          # --------------------------------------------------------------------
           if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_L_leftball.uf2" ] && [ -f "mtk64_R_leftball.uf2" ]; then
             zip -q "../mtk64ebt_Right_Left_Dongle_disp_leftball.zip" mtk64_DONGLE_display.uf2 mtk64_L_leftball.uf2 mtk64_R_leftball.uf2 settings_reset.uf2 2>/dev/null || true
           fi
-          # 7. Complete package containing all firmware
-          zip -q "../mtk64ebt_All.zip" *.uf2 2>/dev/null || true
+
           cd ..
           
           echo "TAG_NAME=latest-main" >> $GITHUB_ENV
@@ -74,6 +140,7 @@ jobs:
           
           git clone https://x-access-token:${PAT_TOKEN}@github.com/mentako-ya/mtk64ebt.git mtk64ebt-repo
           mkdir -p mtk64ebt-repo/firmware/rev4
+          rm -f mtk64ebt-repo/firmware/rev4/*.zip
           cp *.zip mtk64ebt-repo/firmware/rev4/
           
           cd mtk64ebt-repo
