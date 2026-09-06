@@ -1,72 +1,13 @@
 # ==============================================================================
-# mtk64ebt ファームウェア ビルドマトリクス定義 (build.yaml)
+# mtk64ebt ドングル接続 (1000Hz ESB) ファームウェア ビルドマトリクス (build.yaml)
 # ==============================================================================
-#
-# このファイルでは、GitHub Actions によるファームウェア自動ビルドの組み合わせを定義します。
-# 同一シールド定義をベースに、cmake-args を用いて動的に「直接PC接続（BLE Central/Peripheral）」
-# と「ドングル接続（1000Hz 超低遅延 ESB Peripheral）」を作り分けます。
-#
-# 【構成概要】
-# 1. 直接PC接続構成 (Direct PC Connection):
-#    - ドングルを使わず、右手（mtk64_R）をBLE CentralとしてPCと直接接続する標準構成。
-#    - 右手: BLE Central (PCとBLE/USB接続、左手・フットとBLE Split通信、ZMK Studio対応)
-#    - 左手: BLE Peripheral (右手とBLE Split通信)
-#    - フット: BLE Peripheral (右手とBLE Split通信)
-#    ※ sdk-nrf共存環境でのBLEビルド互換性のため -DCONFIG_NRF_SECURITY=n を適用
-#
-# 2. ドングル接続構成 (Dongle 1000Hz ESB Connection):
-#    - 専用ドングル（mtk64_DONGLE）をCentralとし、左右手・フットは1000Hzポーリングの
-#      超低遅延 Nordic ESB (Enhanced ShockBurst) プロトコルで通信する構成。
-#    - ドングル: ESB Central (OLEDディスプレイあり/なし、PCとUSB接続、ZMK Studio対応)
-#    - 右手: ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
-#    - 左手: ESB Peripheral ID:1 (エンコーダー＋キー、1000Hz ESB送信)
-#    - フット: ESB Peripheral ID:3 (フットスイッチ、1000Hz ESB送信)
-#
-# 3. 変則構成 (左手ボール / 右手エンコーダー + ドングル):
-#    - 左手にトラックボール、右手にエンコーダーを配置した変則ハードウェア構成。
-#    - 左手: ESB Peripheral ID:1 (トラックボール＋キー)
-#    - 右手: ESB Peripheral ID:2 (エンコーダー＋キー)
-#
-# 4. ユーティリティ:
-#    - settings_reset: BLEペアリング情報や内部設定を全消去して初期化するためのUF2
+# PC ↔ ドングル(USB Central) ↔ 左右手/フット(1000Hz ESB 超低遅延通信)
 # ==============================================================================
 
 ---
 include:
   # ----------------------------------------------------------------------------
-  # 1. 直接PC接続構成 (Direct PC Connection)
-  #    PC ↔ 右手(BLE/USB) ↔ 左手/フット(BLE Split)
-  # ----------------------------------------------------------------------------
-  # 【右手・セントラル（フットなし用）】接続枠=1（左手が繋がれば即スキャン停止・最速・省電力）
-  - board: xiao_ble//zmk
-    shield: mtk64_R rgbled_adapter
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_BLE=y -DCONFIG_ZMK_SPLIT_BLE=y -DCONFIG_ZMK_SPLIT_ESB=n -DCONFIG_NRF_SECURITY=n -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=1
-    artifact-name: mtk64_R
-
-  # 【右手・セントラル（フットあり用）】接続枠=2（左手＋フットスイッチを同時接続可能）
-  - board: xiao_ble//zmk
-    shield: mtk64_R rgbled_adapter
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_BLE=y -DCONFIG_ZMK_SPLIT_BLE=y -DCONFIG_ZMK_SPLIT_ESB=n -DCONFIG_NRF_SECURITY=n -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
-    artifact-name: mtk64_R_foot
-
-
-  # 【左手・ペリフェラル】直接接続用 (エンコーダー＋キーマトリクス、右手へBLE送信)
-  - board: xiao_ble//zmk
-    shield: mtk64_L rgbled_adapter
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=y -DCONFIG_ZMK_SPLIT_BLE=y -DCONFIG_ZMK_SPLIT_ESB=n -DCONFIG_NRF_SECURITY=n
-    artifact-name: mtk64_L
-
-  # 【フット・ペリフェラル】直接接続用 (フットスイッチ、右手へBLE送信)
-  - board: xiao_ble//zmk
-    shield: mtk64_FOOT rgbled_adapter
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=y -DCONFIG_ZMK_SPLIT_BLE=y -DCONFIG_ZMK_SPLIT_ESB=n -DCONFIG_NRF_SECURITY=n
-    artifact-name: mtk64_FOOT
-
-  # ----------------------------------------------------------------------------
-  # 2. ドングル接続構成 (Dongle 1000Hz ESB Connection)
-  #    PC ↔ ドングル(USB) ↔ 左右手/フット(1000Hz ESB超低遅延通信)
+  # 1. ドングル親機 (Centrals)
   # ----------------------------------------------------------------------------
   # 【ドングル・OLED付きセントラル】レイヤー/BongoCat/WPM/モディファイア表示対応
   - board: xiao_ble//zmk
@@ -82,28 +23,31 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y
     artifact-name: mtk64_DONGLE
 
-  # 【右手・ESBペリフェラル】ドングル用 (トラックボール＋キー、ID:2、1000Hz ESB送信)
+  # ----------------------------------------------------------------------------
+  # 2. 標準構成ペリフェラル (ESB Peripherals: 右手トラックボール / 左手キー)
+  # ----------------------------------------------------------------------------
+  # 【右手・ESBペリフェラル】(PAW3222トラックボール＋キー、ID:2、1000Hz ESB送信)
   - board: xiao_ble//zmk
     shield: mtk64_R rgbled_adapter
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_SPLIT_BLE=n -DCONFIG_ZMK_SPLIT_ESB=y -DCONFIG_ZMK_SPLIT_ESB_PERIPHERAL_ID=2
     artifact-name: mtk64_R_dongle
 
-  # 【左手・ESBペリフェラル】ドングル用 (エンコーダー＋キー、ID:1、1000Hz ESB送信)
+  # 【左手・ESBペリフェラル】(エンコーダー＋キー、ID:1、1000Hz ESB送信)
   - board: xiao_ble//zmk
     shield: mtk64_L rgbled_adapter
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_SPLIT_BLE=n -DCONFIG_ZMK_SPLIT_ESB=y -DCONFIG_ZMK_SPLIT_ESB_PERIPHERAL_ID=1
     artifact-name: mtk64_L_dongle
 
-  # 【フット・ESBペリフェラル】ドングル用 (フットスイッチ、ID:3、1000Hz ESB送信)
+  # 【フット・ESBペリフェラル】(フットスイッチ、ID:3、1000Hz ESB送信)
   - board: xiao_ble//zmk
     shield: mtk64_FOOT rgbled_adapter
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_SPLIT_BLE=n -DCONFIG_ZMK_SPLIT_ESB=y -DCONFIG_ZMK_SPLIT_ESB_PERIPHERAL_ID=3
     artifact-name: mtk64_FOOT_dongle
 
   # ----------------------------------------------------------------------------
-  # 3. 変則構成 (左手ボール / 右手エンコーダー + ドングル)
+  # 3. 変則構成 (左手ボール / 右手エンコーダー)
   # ----------------------------------------------------------------------------
-  # 【左手ボール・ESBペリフェラル】(トラックボール＋キー、ID:1、1000Hz ESB送信)
+  # 【左手ボール・ESBペリフェラル】(PAW3222トラックボール＋キー、ID:1、1000Hz ESB送信)
   - board: xiao_ble//zmk
     shield: mtk64_leftball_L rgbled_adapter
     cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DCONFIG_ZMK_BLE=n -DCONFIG_ZMK_SPLIT_BLE=n -DCONFIG_ZMK_SPLIT_ESB=y -DCONFIG_ZMK_SPLIT_ESB_PERIPHERAL_ID=1
