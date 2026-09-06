@@ -4,5 +4,14 @@ config SHIELD_MTK64_R
 config SHIELD_MTK64_L
     def_bool $(shields_list_contains,mtk64_L)
 
-#config SHIELD_MTK64_FOOT
-#    def_bool $(shields_list_contains,mtk64_FOOT)
+config SHIELD_MTK64_DONGLE
+    def_bool $(shields_list_contains,mtk64_DONGLE)
+
+config SHIELD_MTK64_FOOT
+    def_bool $(shields_list_contains,mtk64_FOOT)
+
+config SHIELD_MTK64_LEFTBALL_L
+    def_bool $(shields_list_contains,mtk64_leftball_L)
+
+config SHIELD_MTK64_LEFTBALL_R
+    def_bool $(shields_list_contains,mtk64_leftball_R)

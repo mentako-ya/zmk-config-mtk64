@@ -1,0 +1,20 @@
+#include "mtk64.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+        zmk,physical-layout = &mtk64_physical_layout;
+    };
+};
+
+&default_transform {
+    row-offset = <7>;
+};
+
+&left_encoder {
+    status = "okay";
+};
+
+&right_encoder {
+    status = "okay";
+};

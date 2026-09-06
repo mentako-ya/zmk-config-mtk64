@@ -3,6 +3,7 @@
 
 / {
     chosen {
+        zmk,kscan = &default_kscan;
         zmk,physical-layout = &mtk64_physical_layout;
     };
     
@@ -10,7 +11,6 @@
         compatible = "zmk,physical-layout";
         display-name = "Default";
         transform = <&default_transform>;
-        kscan = <&kscan0>;
 
         // https://zmk-physical-layout-converter.streamlit.app/
         keys  //                 w   h    x    y     rot    rx    ry
@@ -119,7 +119,7 @@
              >;
     };
     
-    kscan0: kscan {
+    default_kscan: kscan_0 {
         compatible = "zmk,kscan-gpio-charlieplex";
         wakeup-source;
 
@@ -156,8 +156,31 @@
         sensors = <&left_encoder &right_encoder>;
         triggers-per-rotation = <10>;
     };
+
+    esb_split: esb_split {
+        compatible = "zmk,esb-split";
+        base-addr-0 = <0xE7 0xE7 0xE7 0xE7>;
+        base-addr-1 = <0xC2 0xC2 0xC2 0xC2>;
+        addr-prefix = <0xE7 0xC2 0xC3 0xC4 0xC5 0xC6 0xC7 0xC8>;
+    };
 };
 
 &uicr {
         nfct-pins-as-gpios;
+};
+
+/ {
+    behaviors {
+        cpi_inc: cpi_inc {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <0>;
+        };
+
+        cpi_dec: cpi_dec {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <1>;
+        };
+    };
 };

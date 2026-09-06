@@ -1,20 +1,22 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
+#include <input/processors/xyz.dtsi>
+#include <input/processors/report_rate_limit.dtsi>
 
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 0, 4)>,
-                <NRF_PSEL(SPIM_MOSI, 0, 5)>,
-                <NRF_PSEL(SPIM_MISO, 0, 5)>;
+                    <NRF_PSEL(SPIM_MOSI, 0, 5)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 5)>;
         };
     };
 
     spi0_sleep: spi0_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 0, 4)>,
-                <NRF_PSEL(SPIM_MOSI, 0, 5)>,
-                <NRF_PSEL(SPIM_MISO, 0, 5)>;
+                    <NRF_PSEL(SPIM_MOSI, 0, 5)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 5)>;
             low-power-enable;
         };
     };
@@ -30,28 +32,14 @@
 
     trackball: trackball@0 {
         status = "disabled";
-        compatible = "pixart,pmw3610-alt";
+        compatible = "pixart,paw32xx";
         reg = <0>;
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <1000>;
-        swap-xy;
-        invert-x;
-        invert-y;
-        evt-type = <INPUT_EV_REL>;
-        x-input-code = <INPUT_REL_X>;
-        y-input-code = <INPUT_REL_Y>;
-
-        force-awake;
-        /* keep the sensor awake while ZMK activity state is ACTIVE,
-           fallback to normal downshift mode after ZMK goes into IDLE / SLEEP mode.
-           thus, the sensor would be a `wakeup-source` */
-
-        force-awake-4ms-mode;
-        /* while force-awake is acitvated, enable this mode to force sampling per 
-           4ms, where the default sampling rate is 8ms. */
-        /* NOTE: apply this mode if you need 250Hz with direct USB connection. */
-
+        spi-max-frequency = <800000>;
+        motion-gpios = <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        res-cpi = <1558>;
+        zephyr,axis-x = <INPUT_REL_X>;
+        zephyr,axis-y = <INPUT_REL_Y>;
+        // force-awake;
     };
 };
 
@@ -61,44 +49,46 @@
         #size-cells = <0>;
 
         trackball_split: trackball_split@0 {
+            status = "okay";
             device = <&trackball>;
             compatible = "zmk,input-split";
             reg = <0>;
+            input-processors = <&zip_report_rate_limit 1>, <&zip_xyz>;
         };
-    };
-
-    trackball_listener: trackball_listener {
-        compatible = "zmk,input-listener";
-        status = "disabled";
-        device = <&trackball>;
-
-        snipe {
-        layers = <1>;
-        input-processors = <&zip_xy_scaler 1 2>;
-        process-next;
-        };
-
-        scroll {
-        layers = <3>;
-        input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 64>;
-        process-next;
-        };
-
-        input-processors = <&zip_temp_layer 6 5000>;
-
     };
 
     zip_temp_layer: zip_temp_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
         require-prior-idle-ms = <500>;
-        excluded-positions = <
-            43  // ] 
-            44  // N
-            45  // M
-            46  // <
-            47  // >
-        >; 
+        excluded-positions = <43 44 45 46 47>; // MB4, MB5, MB1, MB2, MB3
     };
 
+    behaviors {
+        cpi_inc: cpi_inc {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <0>;
+        };
+
+        cpi_dec: cpi_dec {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <1>;
+        };
+    };
+
+    metadata {
+        studio_cpi_inc: studio_cpi_inc {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&cpi_inc>;
+            display-name = "CPI Increase";
+        };
+
+        studio_cpi_dec: studio_cpi_dec {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&cpi_dec>;
+            display-name = "CPI Decrease";
+        };
+    };
 };

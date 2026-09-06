@@ -1,5 +1,12 @@
 #include "mtk64.dtsi"
 
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+        zmk,physical-layout = &mtk64_physical_layout;
+    };
+};
+
 /*
 &kscan0 {
     gpios

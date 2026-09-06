@@ -18,41 +18,48 @@ jobs:
           name: firmware
           path: firmware
 
-      - name: Create release zip
+      - name: Create release zips
         run: |
-          BRANCH_NAME="${GITHUB_REF_NAME}"
-          BRANCH_NAME_SAFE=$(echo "${BRANCH_NAME}" | sed 's/[^a-zA-Z0-9_.-]/-/g')
-          
-          case "${BRANCH_NAME}" in
-            "right_left") ZIP_NAME="mtk64ebt_Right_Left.zip" ;;
-            "right_left_foot") ZIP_NAME="mtk64ebt_Right_Left_Foot.zip" ;;
-            "right_left_dongle") ZIP_NAME="mtk64ebt_Right_Left_Dongle.zip" ;;
-            "right_left_dongle-display") ZIP_NAME="mtk64ebt_Right_Left_Dongle_display.zip" ;;
-            "right_left_dongle-display_foot") ZIP_NAME="mtk64ebt_Right_Left_Dongle_disp_foot.zip" ;;
-            "right_left_left-ball") ZIP_NAME="mtk64ebt_Right_Left_leftball.zip" ;;
-            "right_left_dongle-display_left-ball") ZIP_NAME="mtk64ebt_Right_Left_Dongle_disp_leftball.zip" ;;
-            "right_left_dongle-mdbt50q_rx") ZIP_NAME="mtk64ebt_Right_Left_Dongle-mdbt50q_rx.zip" ;;
-            "right_left_left-ball_rev3.0") ZIP_NAME="mtk64ebt_Right_Left_leftball_rev3.0.zip" ;;
-            "right_left_dongle-display_left-ball_rev3.0") ZIP_NAME="mtk64ebt_Right_Left_Dongle_disp_leftball_rev3.0.zip" ;;
-            *) ZIP_NAME="mtk64ebt_${BRANCH_NAME_SAFE}.zip" ;;
-          esac
-          
           cd firmware
-          zip -r "../${ZIP_NAME}" .
+          # 1. Right + Left (Direct connection)
+          if [ -f "mtk64_R.uf2" ] && [ -f "mtk64_L.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left.zip" mtk64_R.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 2. Right + Left + Foot
+          if [ -f "mtk64_R.uf2" ] && [ -f "mtk64_L.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Foot.zip" mtk64_R.uf2 mtk64_L.uf2 mtk64_FOOT.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 3. Right + Left + Dongle (no OLED)
+          if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle.zip" mtk64_DONGLE.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 4. Right + Left + Dongle (with OLED display)
+          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle_display.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 5. Right + Left + Dongle (with OLED) + Foot
+          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle_disp_foot.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L.uf2 mtk64_FOOT.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 6. Left-ball + Right-encoder + Dongle (with OLED)
+          if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_L_leftball.uf2" ] && [ -f "mtk64_R_leftball.uf2" ]; then
+            zip -q "../mtk64ebt_Right_Left_Dongle_disp_leftball.zip" mtk64_DONGLE_display.uf2 mtk64_L_leftball.uf2 mtk64_R_leftball.uf2 settings_reset.uf2 2>/dev/null || true
+          fi
+          # 7. Complete package containing all firmware
+          zip -q "../mtk64ebt_All.zip" *.uf2 2>/dev/null || true
           cd ..
           
-          echo "ZIP_NAME=${ZIP_NAME}" >> $GITHUB_ENV
-          echo "TAG_NAME=latest-${BRANCH_NAME_SAFE}" >> $GITHUB_ENV
+          echo "TAG_NAME=latest-main" >> $GITHUB_ENV
 
       - name: Update GitHub Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.TAG_NAME }}
           allowUpdates: true
-          removeArtifacts: true
-          artifacts: "${{ env.ZIP_NAME }}"
-          body: "Automated pre-built firmware for mtk64ebt (${{ github.ref_name }} branch)"
-          name: "Latest Firmware (${{ github.ref_name }})"
+          removeArtifacts: false
+          artifacts: "*.zip"
+          body: "Automated pre-built firmware packages for mtk64ebt (All 6 configurations unified on main)"
+          name: "Latest Firmware (mtk64ebt main)"
           prerelease: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -66,15 +73,16 @@ jobs:
           fi
           
           git clone https://x-access-token:${PAT_TOKEN}@github.com/mentako-ya/mtk64ebt.git mtk64ebt-repo
-          cp "${ZIP_NAME}" mtk64ebt-repo/firmware/
+          mkdir -p mtk64ebt-repo/firmware/rev4
+          cp *.zip mtk64ebt-repo/firmware/rev4/
           
           cd mtk64ebt-repo
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add firmware/
+          git add firmware/rev4/
           
           if ! git diff-index --quiet HEAD; then
-            git commit -m "Auto-update firmware: ${ZIP_NAME} from zmk-config-mtk64@${{ github.sha }}"
+            git commit -m "Auto-update Rev4 firmware ZIPs from zmk-config-mtk64@${{ github.sha }}"
             git push origin main
           else
             echo "No changes in firmware ZIP. Skipping push."

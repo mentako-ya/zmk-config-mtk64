@@ -1,0 +1,23 @@
+#include "mtk64.dtsi"
+#include "mtk64_trackball.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &default_kscan;
+        zmk,physical-layout = &mtk64_physical_layout;
+    };
+};
+
+&spi0 {
+    status = "okay";
+};
+
+&trackball { 
+    status = "okay";
+};
+
+&trackball_split { 
+    status = "okay";
+};
+
+&xiao_serial { status = "disabled"; };

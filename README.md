@@ -1,9 +1,10 @@
 # README
 
-mtk64ebt Rev3用zmkファームウェアです。
+mtk64ebt Rev4用ファームウェアです。
 
 > [!NOTE]
-> mtk64ebt Rev4用ファームウェアについては、[main ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/main#readme) を参照してください。
+> mtk64ebt Rev3用ファームウェアについては、各 `_rev3` ブランチ（例: [right_left_rev3 ブランチの README](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_rev3#readme)）を参照してください。
+
 
 ### キーマップの変更
 
@@ -35,108 +36,93 @@ https://github.com/caksoylar/zmk-rgbled-widget
 - レイヤ−３ スクロールモード　         トラックボールでスクロール
 - レイヤ−６ オートマウスレーイヤー　　　右手キーボードはマウスボタン操作用マッピング　オートマウスレイヤ動作時の遷移先　         
 
-## 各種Rev3ファームウェアおよびブランチについて
-キーボードのハードウェア構成に応じたファームウェア（ZIP）およびソースコードブランチを使用してください。
+## 提供ファームウェア構成一覧（mainブランチで一括ビルド）
 
-### 1. 左右構成用（直接PC接続）
-* **ファームウェア**: [mtk64ebt_Right_Left.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left.zip)
-* **ソースコード**: [right_left_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_rev3)
-* **説明**: ドングルを使用せず、右手側をセントラル（親機）としてPCとBluetooth直接接続して使用する標準構成です。
+本リポジトリ（`main` ブランチ）では、以下の 6 種類のハードウェア構成に対応したファームウェアが一括ビルドされ、GitHub Actions リリースおよびローカルビルドにて ZIP パッケージとして自動生成されます。
 
-### 2. 左右＋フットスイッチ無線化モジュール用
-* **ファームウェア**: [mtk64ebt_Right_Left_Foot.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Foot.zip)
-* **ソースコード**: [right_left_foot_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_foot_rev3)
-* **説明**: 左右キーボードに加え、無線フットスイッチモジュールを組み合わせて使用する構成です。
+| No | 構成名 | パッケージ名 (ZIP) | 含まれるファームウェア (.uf2) |
+| :--- | :--- | :--- | :--- |
+| 1 | **左右構成（直接PC接続）** | `mtk64ebt_Right_Left.zip` | `mtk64_R.uf2`, `mtk64_L.uf2`, `settings_reset.uf2` |
+| 2 | **左右＋フットスイッチ** | `mtk64ebt_Right_Left_Foot.zip` | `mtk64_R.uf2`, `mtk64_L.uf2`, `mtk64_FOOT.uf2`, `settings_reset.uf2` |
+| 3 | **左右＋ドングル（画面なし）** | `mtk64ebt_Right_Left_Dongle.zip` | `mtk64_DONGLE.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L.uf2`, `settings_reset.uf2` |
+| 4 | **左右＋ドングルOLED** | `mtk64ebt_Right_Left_Dongle_display.zip` | `mtk64_DONGLE_display.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L.uf2`, `settings_reset.uf2` |
+| 5 | **左右＋ドングルOLED＋フット** | `mtk64ebt_Right_Left_Dongle_disp_foot.zip` | `mtk64_DONGLE_display.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L.uf2`, `mtk64_FOOT.uf2`, `settings_reset.uf2` |
+| 6 | **左ボール右エンコーダー＋ドングルOLED** | `mtk64ebt_Right_Left_Dongle_disp_leftball.zip` | `mtk64_DONGLE_display.uf2`, `mtk64_L_leftball.uf2`, `mtk64_R_leftball.uf2`, `settings_reset.uf2` |
 
-### 3. 左右＋ドングルモジュール用（画面なし）
-* **ファームウェア**: [mtk64ebt_Right_Left_Dongle.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle.zip)
-* **ソースコード**: [right_left_dongle_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle_rev3)
-* **説明**: [Seeed Studio XIAO BLE](https://jp.seeedstudio.com/Seeed-XIAO-BLE-nRF52840-p-5201.html) をドングル親機として使用する構成です。解凍したファイルのドングル用ファームウェアをドングルに書き込んでください。
+> 全構成をまとめた `mtk64ebt_All.zip` も同時に生成されます。
 
-### 4. 左右＋ドングルモジュールOLED用
-* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_display.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_display.zip)
-* **ソースコード**: [right_left_dongle-display_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_rev3)
-* **説明**: OLEDディスプレイ付きドングル親機を使用する構成です。解凍したファイルのドングル用ファームウェアをドングルに書き込んでください。
-
-### 5. 左右＋ドングルモジュールOLED＋フットスイッチ用
-* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_disp_foot.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_disp_foot.zip)
-* **ソースコード**: [right_left_dongle-display_foot_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_foot_rev3)
-* **説明**: OLEDディスプレイ付きドングル親機に、左右キーボードおよび無線フットスイッチを接続して使用する構成です。
-
-### 6. 左ボール右エンコーダー用
-* **ファームウェア**: [mtk64ebt_Right_Left_leftball.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_leftball.zip)
-* **ソースコード**: [right_left_left-ball_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_left-ball_rev3)
-* **説明**: 左手側にトラックボール、右手側にロータリーエンコーダーを配置する構成です。
-
-### 7. 左ボール右エンコーダー＋ドングルモジュールOLED用
-* **ファームウェア**: [mtk64ebt_Right_Left_Dongle_disp_leftball.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle_disp_leftball.zip)
-* **ソースコード**: [right_left_dongle-display_left-ball_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-display_left-ball_rev3)
-* **説明**: 左ボール右エンコーダー構成で、OLEDディスプレイ付きドングル親機を介してPCと接続する構成です。
-
-### 8. 左右＋ドングルモジュール(RAYTAC-MDBT50Q-RX)用
-* **ファームウェア**: [mtk64ebt_Right_Left_Dongle-mdbt50q_rx.zip](https://github.com/mentako-ya/mtk64ebt/raw/rev3/firmware/rev3/mtk64ebt_Right_Left_Dongle-mdbt50q_rx.zip)
-* **ソースコード**: [right_left_dongle-mdbt50q_rx_rev3 ブランチ](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle-mdbt50q_rx_rev3)
-* **説明**: [RAYTAC-MDBT50Q-RX](https://www.switch-science.com/products/5531) をドングルとして使用するファームウェアです。
-
+---
 
 ## フォークとカスタマイズ
-リポジトリをフォークして、キーマップや各種機能のカスタマイズにご使用ください。
+リポジトリをフォークして、キーマップや各種設定のカスタマイズにご使用いただけます。
 
-1. GitHubでこのリポジトリをフォークします。
+1. **リポジトリのフォーク**:
+   * GitHub 画面右上の「Fork」ボタンをクリックして、ご自身のアカウントにフォークします。
+   * ※ 初回のみ、フォーク先リポジトリの **「Actions」タブ** を開き、**「I understand my workflows, go ahead and enable them」** をクリックして GitHub Actions を有効化してください。
 
-2. フォークしたリポジトリをクローンします。
+2. **ローカルへクローン**:
+   ```sh
+   git clone https://github.com/<your_username>/zmk-config-mtk64.git
+   cd zmk-config-mtk64
+   ```
 
-    ```sh
-    git clone https://github.com/<your_username>/zmk-config-mtk64.git
-    cd zmk-config-mtk64
-    ```
+3. **本家（upstream）リポジトリの登録**:
+   ```sh
+   git remote add upstream https://github.com/mentako-ya/zmk-config-mtk64.git
+   ```
 
-3. オリジナルのリポジトリ（upstream）をリモートとして追加します。
+4. **最新の更新を取り込む場合**:
+   ```sh
+   git fetch upstream
+   git merge upstream/main
+   ```
 
-    ```sh
-    git remote add upstream https://github.com/yourusername/zmk-config-mtk64.git
-    ```
-
-4. 必要に応じてリモートから最新の変更を取得し、マージします。
-
-    ```sh
-    git fetch upstream
-    git merge upstream/main
-    ```
-
-5. カスタマイズを行い、変更をコミットします。
-
-    ```sh
-    git add .
-    git commit -m "カスタマイズの説明"
-    git push origin main
-    ```
+5. **キーマップの変更とプッシュ**:
+   * `config/mtk64.keymap` などを編集後、コミットしてプッシュします。
+   ```sh
+   git add .
+   git commit -m "feat: customize keymap"
+   git push origin main
+   ```
 
 6. GitHubでプルリクエストを作成し、変更を共有していただけるとよろこびます。
 
-## ファームウェアのビルドと書き込み
+---
 
-1. フォークしたリポジトリに変更をプッシュすると、GitHub Actionsが自動的にビルドを開始します。
+## ファームウェアの自動ビルドと書き込み手順
 
-    GitHubのActionsタブでビルドの進行状況を確認できます。
-    
-    build / Merge Output Artifacts　のログを開き、'Artifact download URL'　のリンクからzipファイルをダウンロードします。
-    ```
-    Artifact download URL: https://github.com/<your_username>/zmk-config-mtk64/actions/runs/xxxxxxx/artifacts/xxxxxx
-    ```
+### 1. 自動ビルドとダウンロード
 
-3. ビルドしたファームウェアをダウンロードして解凍します。
+変更をフォーク先リポジトリの `main` ブランチにプッシュすると、GitHub Actions が自動的に全 6 構成のファームウェアを一括ビルドします。
 
-    ```
-    mtk64_R rgbled_adapter-xiao_ble-zmk.uf2       右手用ファームウェア
-    mtk64_L rgbled_adapter-xiao_ble-zmk.uf2       左手用ファームウェア
-    mtk64_DONGLE rgbled_adapter-xiao_ble-zmk.uf2  ドングル用ファームウェア※
-    mtk64_FOOT rgbled_adapter-xiao_ble-zmk.uf2    フットスイッチ用ファームウェア※
-    settings_reset-xiao_ble-zmk.uf2               リセット用ファイル
-    ```
+ビルド完了後、ファームウェア（ZIP）は以下のいずれかからダウンロードできます：
 
-    ※ ビルドしたファームウェアのブランチによって構成が変わります。
+* **方法 A（推奨：Releases からダウンロード）**:
+  * フォーク先リポジトリの **「Releases」ページ**（右サイドバーの Releases または `latest-main` タグ）を開きます。
+  * Assets の一覧から、ご自身のハードウェア構成に合った ZIP ファイル（例: `mtk64ebt_Right_Left_Dongle_display.zip`）をクリックしてダウンロードします。
+* **方法 B（Actions 実行履歴からダウンロード）**:
+  * **「Actions」タブ** $\to$ 最新のワークフロー実行結果を開きます。
+  * ページ最下部の **「Artifacts」** 一覧からも各構成のファイルをダウンロードできます。
 
-4. USBケーブルでキーボード、ドングル、フットスイッチモジュールを接続して、リセットスイッチをダブルクリックすると、リムーバブルディスク"XIAO-SENSE"として認識されます。
+### 2. ZIP 内に含まれるファームウェア一覧
 
-    まず　settings_reset-xiao_ble-zmk.uf2　をリムーバブルディスクに書き込み、再度リセットスイッチをダブルクリックして、新しいファームウェアを書き込んでください。
+ZIP を解凍すると、構成に応じた `.uf2` ファイルが含まれています：
+
+```text
+mtk64_R.uf2 / mtk64_R_dongle.uf2       右手用ファームウェア
+mtk64_L.uf2 / mtk64_L_leftball.uf2     左手用ファームウェア
+mtk64_DONGLE_display.uf2 / DONGLE.uf2   ドングル親機用ファームウェア
+mtk64_FOOT.uf2                         フットスイッチ用ファームウェア
+settings_reset.uf2                     設定リセット用ファームウェア
+```
+
+### 3. デバイスへの書き込み（フラッシュ）手順
+
+各モジュール（右手、左手、ドングル、フットスイッチ）へ対応するファームウェアを書き込みます：
+
+1. **USB 接続**: 書き込むデバイスを USB ケーブルで PC に接続します。
+2. **ブートローダー起動**: Xiao BLE 基板上のリセットスイッチを **素早く 2 回（ダブルクリック）** 押します。PC にリムーバブルディスク **`XIAO-SENSE`** がマウントされます。
+3. **設定リセット（初回または動作不安定時）**:
+   * `settings_reset.uf2` を `XIAO-SENSE` ドライブへドラッグ＆ドロップします。書き込み後、自動的に再起動します。
+4. **ファームウェア書き込み**:
+   * 再度リセットスイッチをダブルクリックして `XIAO-SENSE` を開き、対応するファームウェア（例: 右手なら `mtk64_R.uf2`）をドラッグ＆ドロップして書き込みます。

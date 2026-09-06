@@ -1,0 +1,27 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Behavior to control PAW3222 CPI resolution
+
+compatible: "zmk,behavior-paw32xx-cpi"
+
+include: zero_param.yaml
+
+properties:
+  cmd:
+    type: int
+    required: true
+    enum:
+      - 0 # INC
+      - 1 # DEC
+      - 2 # SET
+    description: |
+      Command type:
+      0: Increase CPI
+      1: Decrease CPI
+      2: Set explicit CPI value
+
+  val:
+    type: int
+    required: false
+    description: Explicit CPI value when cmd is 2 (SET).

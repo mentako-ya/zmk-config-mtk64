@@ -18,13 +18,45 @@
 #
 ---
 include:
- - board: xiao_ble//zmk
-   shield: mtk64_R rgbled_adapter
-   snippet: studio-rpc-usb-uart
-   cmake-args: -DCONFIG_ZMK_STUDIO=y
- - board: xiao_ble//zmk
-   shield: mtk64_L rgbled_adapter
-# - board: xiao_ble//zmk
-#   shield: mtk64_FOOT rgbled_adapter
- - board: xiao_ble//zmk
-   shield: settings_reset
+  # 1. Direct PC Connection (BLE Central on Right)
+  - board: xiao_ble//zmk
+    shield: mtk64_R rgbled_adapter
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: mtk64_R
+  - board: xiao_ble//zmk
+    shield: mtk64_L rgbled_adapter
+    artifact-name: mtk64_L
+  - board: xiao_ble//zmk
+    shield: mtk64_FOOT rgbled_adapter
+    artifact-name: mtk64_FOOT
+
+  # 2. Dongle Connection (Central on Dongle)
+  - board: xiao_ble//zmk
+    shield: mtk64_DONGLE rgbled_adapter dongle_display
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: mtk64_DONGLE_display
+  - board: xiao_ble//zmk
+    shield: mtk64_DONGLE rgbled_adapter
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: mtk64_DONGLE
+  - board: xiao_ble//zmk
+    shield: mtk64_R rgbled_adapter
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: mtk64_R_dongle
+
+  # 3. Left-ball / Right-encoder Variation
+  - board: xiao_ble//zmk
+    shield: mtk64_leftball_L rgbled_adapter
+    artifact-name: mtk64_L_leftball
+  - board: xiao_ble//zmk
+    shield: mtk64_leftball_R rgbled_adapter
+    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    artifact-name: mtk64_R_leftball
+
+  # 4. Settings Reset
+  - board: xiao_ble//zmk
+    shield: settings_reset
+    artifact-name: settings_reset
