@@ -1,7 +1,7 @@
 if SHIELD_MTK64_R
 
 config ZMK_KEYBOARD_NAME
-    default "mtk64"
+    default "mtk64_R"
 
 config ZMK_SPLIT
     default y
@@ -17,17 +17,27 @@ endif
 if SHIELD_MTK64_L
 
 config ZMK_KEYBOARD_NAME
-    default "mtk64"
+    default "mtk64_L"
 
 config ZMK_SPLIT
     default y
 
 endif
 
-if SHIELD_MTK64_DONGLE
+if SHIELD_MTK64_FOOT
 
 config ZMK_KEYBOARD_NAME
-    default "mtk64"
+    default "mtk64_FOOT"
+
+config ZMK_SPLIT
+    default y
+
+endif
+
+if SHIELD_MTK64_LEFTBALL_R
+
+config ZMK_KEYBOARD_NAME
+    default "mtk64_R"
 
 config ZMK_SPLIT
     default y
@@ -38,26 +48,12 @@ config ZMK_SPLIT_ROLE_CENTRAL
 config ZMK_POINTING
     default y
 
-config ZMK_BATTERY
-    bool
-    default y
-
-endif
-
-if SHIELD_MTK64_FOOT
-
-config ZMK_KEYBOARD_NAME
-    default "mtk64"
-
-config ZMK_SPLIT
-    default y
-
 endif
 
 if SHIELD_MTK64_LEFTBALL_L
 
 config ZMK_KEYBOARD_NAME
-    default "mtk64"
+    default "mtk64_L"
 
 config ZMK_SPLIT
     default y
@@ -66,14 +62,3 @@ config ZMK_POINTING
     default y
 
 endif
-
-if SHIELD_MTK64_LEFTBALL_R
-
-config ZMK_KEYBOARD_NAME
-    default "mtk64"
-
-config ZMK_SPLIT
-    default y
-
-endif
-

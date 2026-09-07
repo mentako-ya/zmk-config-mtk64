@@ -4,16 +4,12 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: mentako-ya
       url-base: https://github.com/mentako-ya
-    - name: sekigon-gonnoc
-      url-base: https://github.com/sekigon-gonnoc
     - name: badjeff
       url-base: https://github.com/badjeff
     - name: caksoylar
       url-base: https://github.com/caksoylar
     - name: englmaxi
       url-base: https://github.com/englmaxi
-    - name: nrfconnect
-      url-base: https://github.com/nrfconnect
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -28,20 +24,6 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
-    - name: zmk-dongle-display
-      remote: mentako-ya
-      revision: mtk64_rev4
-    - name: zmk-feature-split-esb
-      remote: badjeff
-      revision: main
-    - name: sdk-nrf
-      remote: badjeff
-      revision: v3.1-branch+zmk-fixes
-      path: nrf
-    - name: nrfxlib
-      remote: nrfconnect
-      revision: v3.1-branch
-      repo-path: sdk-nrfxlib
-      path: nrfxlib
   self:
     path: config
+

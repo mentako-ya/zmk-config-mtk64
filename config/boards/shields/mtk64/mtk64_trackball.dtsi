@@ -49,11 +49,11 @@
         #size-cells = <0>;
 
         trackball_split: trackball_split@0 {
-            status = "okay";
+            status = "disabled";
             device = <&trackball>;
             compatible = "zmk,input-split";
             reg = <0>;
-            input-processors = <&zip_report_rate_limit 1>, <&zip_xyz>;
+            input-processors = <&zip_report_rate_limit 1>, <&zip_ble_report_rate_limit 8>, <&zip_xyz>;
         };
     };
 
