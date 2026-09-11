@@ -51,27 +51,29 @@ mtk64ebt Rev4 用の ZMK ファームウェアリポジトリです。
 
 ### 1. `right_left_rev4` ブランチ（Bluetooth接続 / BLE Split）
 
-ドングルを使用せず、PC と右手キーボード（Central 親機）を Bluetooth でペアリングする標準構成です。
+ドングルを使用せず、PC とキーボード（Central 親機）を Bluetooth で直接ペアリングする標準構成です。
 ドングルが手元にない外出先やノート PC 環境でも、キーボード単体で手軽に使用できます。
+※標準構成では右手（`mtk64_R`）、左ボール構成では左手（`mtk64_L_leftball`）が Central 親機として動作し、133.3Hz（7.5ms）の超低遅延 BLE 通信を行います。
 
 * **ブランチ**: **[`right_left_rev4`](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_rev4)**
 * **提供ファームウェアパッケージ (ZIP)**:
   1. **左右構成**: `mtk64ebt_Right_Left.zip`
-     - 含まれるファイル: `mtk64_R.uf2`, `mtk64_L.uf2`, `settings_reset.uf2`
+     - 含まれるファイル: `mtk64_R.uf2` (Central), `mtk64_L.uf2` (Peripheral), `settings_reset.uf2`
   2. **左右＋フットスイッチ**: `mtk64ebt_Right_Left_Foot.zip`
-     - 含まれるファイル: `mtk64_R.uf2`, `mtk64_L.uf2`, `mtk64_FOOT.uf2`, `settings_reset.uf2`
+     - 含まれるファイル: `mtk64_R.uf2` (Central 枠=2), `mtk64_L.uf2` (Peripheral), `mtk64_FOOT.uf2` (Peripheral), `settings_reset.uf2`
   3. **左ボール右エンコーダー**: `mtk64ebt_Right_Left_leftball.zip`
-     - 含まれるファイル: `mtk64_R_leftball.uf2`, `mtk64_L_leftball.uf2`, `settings_reset.uf2`
+     - 含まれるファイル: `mtk64_L_leftball.uf2` (Central), `mtk64_R_leftball.uf2` (Peripheral), `settings_reset.uf2`
   4. **左ボール右エンコーダー＋フットスイッチ**: `mtk64ebt_Right_Left_Foot_leftball.zip`
-     - 含まれるファイル: `mtk64_R_leftball.uf2`, `mtk64_L_leftball.uf2`, `mtk64_FOOT.uf2`, `settings_reset.uf2`
+     - 含まれるファイル: `mtk64_L_leftball.uf2` (Central 枠=2), `mtk64_R_leftball.uf2` (Peripheral), `mtk64_FOOT.uf2` (Peripheral), `settings_reset.uf2`
 
 #### キーボードのBluetooth接続手順
 1. キーボードのバッテリー駆動スイッチを ON にします。
-2. 右手、左手（およびフットスイッチ）基板上のリセットボタンを 1 回押して左右間をペアリングします。
+2. セントラル親機（標準: 右手 / 左ボール: 左手）および子機基板上のリセットボタンを 1 回押して左右間をペアリングします。
 3. PC の Bluetooth 設定画面を開き、検出された **`mtk64`** を選択して接続します（通常は数字コード入力不要でワンクリック接続）。
 4. **接続状態の確認（LED）**:
-   * 右手側 LED: 接続中🔵、ペアリング待機中🟡、切断中🔴
-   * 左手・フット側 LED: セントラル接続中🔵、切断中🔴
+   * セントラル親機側 LED: 接続中🔵、ペアリング待機中🟡、切断中🔴
+   * ペリフェラル子機側 LED: セントラル接続中🔵、切断中🔴
+
 
 ---
 
