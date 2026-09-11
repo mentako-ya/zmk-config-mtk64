@@ -27,24 +27,25 @@ include:
     shield: mtk64_FOOT rgbled_adapter
     artifact-name: mtk64_FOOT
 
-  # 左ボール構成 右手 Central（フットスイッチなし: 接続枠=1）
-  - board: xiao_ble//zmk
-    shield: mtk64_leftball_R rgbled_adapter
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=1
-    artifact-name: mtk64_R_leftball
-
-  # 左ボール構成 右手 Central（フットスイッチあり: 接続枠=2）
-  - board: xiao_ble//zmk
-    shield: mtk64_leftball_R rgbled_adapter
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
-    artifact-name: mtk64_R_foot_leftball
-
-  # 左ボール構成 左手 Peripheral (トラックボール＋キーマトリクス)
+  # 左ボール構成 左手 Central（フットスイッチなし: 接続枠=1）
   - board: xiao_ble//zmk
     shield: mtk64_leftball_L rgbled_adapter
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=1
     artifact-name: mtk64_L_leftball
+
+  # 左ボール構成 左手 Central（フットスイッチあり: 接続枠=2）
+  - board: xiao_ble//zmk
+    shield: mtk64_leftball_L rgbled_adapter
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
+    artifact-name: mtk64_L_foot_leftball
+
+  # 左ボール構成 右手 Peripheral (エンコーダー＋キーマトリクス)
+  - board: xiao_ble//zmk
+    shield: mtk64_leftball_R rgbled_adapter
+    artifact-name: mtk64_R_leftball
+
 
   # 設定リセット (ペアリング・NVS消去用)
   - board: xiao_ble//zmk

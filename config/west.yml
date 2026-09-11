@@ -12,8 +12,8 @@ manifest:
       url-base: https://github.com/englmaxi
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: main
+      remote: mentako-ya
+      revision: mtk64_rev4
       import: app/west.yml
     - name: zmk-input-processor-xyz
       remote: badjeff

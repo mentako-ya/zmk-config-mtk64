@@ -12,3 +12,20 @@ config SHIELD_MTK64_LEFTBALL_L
 
 config SHIELD_MTK64_LEFTBALL_R
     def_bool $(shields_list_contains,mtk64_leftball_R)
+
+menu "MTK64 Trackball Rate Limit"
+
+config ZMK_TRACKBALL_REPORT_INTERVAL_USB_US
+    int "USB trackball report interval (microseconds)"
+    default 1000
+    help
+      Report interval for USB in microseconds (default: 1000us = 1ms / 1000Hz).
+
+config ZMK_TRACKBALL_REPORT_INTERVAL_BLE_US
+    int "BLE trackball report interval (microseconds)"
+    default 7000
+    help
+      Report interval for BLE in microseconds (default: 7000us = 7.0ms / 133.3Hz slot sync).
+
+endmenu
+

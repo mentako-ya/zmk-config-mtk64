@@ -31,7 +31,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
-        input-processors = <&zip_report_rate_limit 1>, <&zip_ble_report_rate_limit 8>, <&zip_temp_layer 6 5000>;
+        input-processors = <&zip_temp_layer 6 5000>, <&zip_dynamic_rate_limit 1 8>;
 
         snipe {
             layers = <1>;

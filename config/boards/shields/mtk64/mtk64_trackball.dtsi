@@ -39,7 +39,7 @@
         res-cpi = <1558>;
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
-        // force-awake;
+        force-awake;
     };
 };
 
@@ -55,6 +55,13 @@
             reg = <0>;
             input-processors = <&zip_report_rate_limit 1>, <&zip_ble_report_rate_limit 8>, <&zip_xyz>;
         };
+    };
+
+    zip_dynamic_rate_limit: zip_dynamic_rate_limit {
+        compatible = "zmk,input-processor-dynamic-rate-limit";
+        #input-processor-cells = <2>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_X INPUT_REL_Y>;
     };
 
     zip_temp_layer: zip_temp_layer {

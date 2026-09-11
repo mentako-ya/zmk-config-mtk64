@@ -1,0 +1,15 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Dynamic input processor for switching report rate between USB and BLE transports
+
+compatible: "zmk,input-processor-dynamic-rate-limit"
+
+include: ip_two_param.yaml
+
+properties:
+  type:
+    type: int
+  codes:
+    type: array
+    required: true

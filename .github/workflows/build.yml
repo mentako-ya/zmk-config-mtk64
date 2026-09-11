@@ -57,11 +57,12 @@ jobs:
           fi
 
           # --------------------------------------------------------------------
+          # --------------------------------------------------------------------
           # パッケージ 3: 直接PC接続 左ボール構成 (right_left_leftball)
           # 【役割・構成】
           # - 左手トラックボール、右手エンコーダーの直接PC接続構成。
-          # - 右手 (mtk64_R_leftball.uf2): BLE Central (エンコーダー、PCとBLE/USB接続、ZMK Studio対応)
-          # - 左手 (mtk64_L_leftball.uf2): BLE Peripheral (トラックボール、右手へBLE Split送信)
+          # - 左手 (mtk64_L_leftball.uf2): BLE Central (トラックボール、PCとBLE/USB接続、ZMK Studio対応)
+          # - 右手 (mtk64_R_leftball.uf2): BLE Peripheral (エンコーダー、左手へBLE Split送信)
           # - 初期化用 (settings_reset.uf2): BLEペアリング不調時のリセット用
           # --------------------------------------------------------------------
           if [ -f "mtk64_R_leftball.uf2" ] && [ -f "mtk64_L_leftball.uf2" ]; then
@@ -72,21 +73,21 @@ jobs:
           # パッケージ 4: 直接PC接続 左ボール + フットスイッチ (right_left_foot_leftball)
           # 【役割・構成】
           # - パッケージ 3 にフットスイッチ（mtk64_FOOT.uf2）を追加した直接接続構成。
-          # - 右手 (mtk64_R_leftball.uf2): BLE Central（接続枠=2 で左手＋フットの同時接続に対応）
-          # - 左手 (mtk64_L_leftball.uf2): BLE Peripheral (トラックボール、右手へBLE Split送信)
-          # - フット (mtk64_FOOT.uf2): BLE Peripheral (右手へBLE Split送信)
+          # - 左手 (mtk64_L_foot_leftball.uf2): BLE Central（接続枠=2 で右手＋フットの同時接続に対応）
+          # - 右手 (mtk64_R_leftball.uf2): BLE Peripheral (エンコーダー、左手へBLE Split送信)
+          # - フット (mtk64_FOOT.uf2): BLE Peripheral (左手へBLE Split送信)
           # --------------------------------------------------------------------
-          R_FOOT_LB=""
-          if [ -f "mtk64_R_foot_leftball.uf2" ]; then
-            R_FOOT_LB="mtk64_R_foot_leftball.uf2"
-          elif [ -f "mtk64_R_leftball_foot.uf2" ]; then
-            R_FOOT_LB="mtk64_R_leftball_foot.uf2"
+          L_FOOT_LB=""
+          if [ -f "mtk64_L_foot_leftball.uf2" ]; then
+            L_FOOT_LB="mtk64_L_foot_leftball.uf2"
+          elif [ -f "mtk64_L_leftball_foot.uf2" ]; then
+            L_FOOT_LB="mtk64_L_leftball_foot.uf2"
           fi
 
-          if [ -n "$R_FOOT_LB" ] && [ -f "mtk64_L_leftball.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
+          if [ -n "$L_FOOT_LB" ] && [ -f "mtk64_R_leftball.uf2" ] && [ -f "mtk64_FOOT.uf2" ]; then
             mkdir -p pkg_foot_leftball
-            cp "$R_FOOT_LB" pkg_foot_leftball/mtk64_R_leftball.uf2
-            cp mtk64_L_leftball.uf2 pkg_foot_leftball/
+            cp "$L_FOOT_LB" pkg_foot_leftball/mtk64_L_leftball.uf2
+            cp mtk64_R_leftball.uf2 pkg_foot_leftball/
             cp mtk64_FOOT.uf2 pkg_foot_leftball/
             cp settings_reset.uf2 pkg_foot_leftball/ 2>/dev/null || true
             (cd pkg_foot_leftball && zip -q "../../mtk64ebt_Right_Left_Foot_leftball.zip" *.uf2)

@@ -8,6 +8,27 @@
     };
 };
 
+/ {
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&trackball>;
+        input-processors = <&zip_temp_layer 6 5000>, <&zip_dynamic_rate_limit 1 8>;
+
+        snipe {
+            layers = <1>;
+            input-processors = <&zip_xy_scaler 1 2>;
+            process-next;
+        };
+
+        scroll {
+            layers = <3>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 64>;
+            process-next;
+        };
+    };
+};
+
 &spi0 {
     status = "okay";
 };
@@ -16,8 +37,5 @@
     status = "okay";
 };
 
-&trackball_split { 
-    status = "okay";
-};
-
 &xiao_serial { status = "disabled"; };
+
