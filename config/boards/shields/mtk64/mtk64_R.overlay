@@ -31,7 +31,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
-        input-processors = <&zip_temp_layer 6 5000>, <&zip_dynamic_rate_limit 1 8>;
+        input-processors = <&zip_aml 6 5000>, <&zip_dynamic_rate_limit 1 8>;
 
         snipe {
             layers = <1>;
@@ -41,7 +41,7 @@
 
         scroll {
             layers = <3>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_scaler 1 64>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_inverter>, <&zip_scroll_scaler 1 64>;
             process-next;
         };
     };

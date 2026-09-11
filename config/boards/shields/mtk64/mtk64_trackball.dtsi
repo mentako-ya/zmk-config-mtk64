@@ -64,26 +64,6 @@
         codes = <INPUT_REL_X INPUT_REL_Y>;
     };
 
-    zip_temp_layer: zip_temp_layer {
-        compatible = "zmk,input-processor-temp-layer";
-        #input-processor-cells = <2>;
-        require-prior-idle-ms = <500>;
-        excluded-positions = <43 44 45 46 47>; // MB4, MB5, MB1, MB2, MB3
-    };
-
-    behaviors {
-        cpi_inc: cpi_inc {
-            compatible = "zmk,behavior-paw32xx-cpi";
-            #binding-cells = <0>;
-            cmd = <0>;
-        };
-
-        cpi_dec: cpi_dec {
-            compatible = "zmk,behavior-paw32xx-cpi";
-            #binding-cells = <0>;
-            cmd = <1>;
-        };
-    };
 
     metadata {
         studio_cpi_inc: studio_cpi_inc {
@@ -96,6 +76,18 @@
             compatible = "zmk,behavior-metadata";
             behavior = <&cpi_dec>;
             display-name = "CPI Decrease";
+        };
+
+        studio_aml_tog: studio_aml_tog {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&aml_tog>;
+            display-name = "Auto Mouse Toggle";
+        };
+
+        studio_scrl_inv_tog: studio_scrl_inv_tog {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&scrl_inv_tog>;
+            display-name = "Scroll Invert Toggle";
         };
     };
 };

@@ -1,0 +1,22 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Behavior to control Auto Mouse Layer (AML) ON/OFF state
+
+compatible: "zmk,behavior-aml"
+
+include: zero_param.yaml
+
+properties:
+  cmd:
+    type: int
+    required: true
+    enum:
+      - 0 # TOG
+      - 1 # ON
+      - 2 # OFF
+    description: |
+      Command type:
+      0: Toggle AML state
+      1: Turn AML ON
+      2: Turn AML OFF

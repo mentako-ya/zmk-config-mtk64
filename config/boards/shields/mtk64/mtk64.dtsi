@@ -163,6 +163,18 @@
 };
 
 / {
+    zip_aml: zip_aml {
+        compatible = "zmk,input-processor-aml";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;
+        excluded-positions = <43 44 45 46 47>; // MB4, MB5, MB1, MB2, MB3
+    };
+
+    zip_scroll_inverter: zip_scroll_inverter {
+        compatible = "zmk,input-processor-scroll-inverter";
+        #input-processor-cells = <0>;
+    };
+
     behaviors {
         cpi_inc: cpi_inc {
             compatible = "zmk,behavior-paw32xx-cpi";
@@ -174,6 +186,42 @@
             compatible = "zmk,behavior-paw32xx-cpi";
             #binding-cells = <0>;
             cmd = <1>;
+        };
+
+        aml_tog: aml_tog {
+            compatible = "zmk,behavior-aml";
+            #binding-cells = <0>;
+            cmd = <0>;
+        };
+
+        aml_on: aml_on {
+            compatible = "zmk,behavior-aml";
+            #binding-cells = <0>;
+            cmd = <1>;
+        };
+
+        aml_off: aml_off {
+            compatible = "zmk,behavior-aml";
+            #binding-cells = <0>;
+            cmd = <2>;
+        };
+
+        scrl_inv_tog: scrl_inv_tog {
+            compatible = "zmk,behavior-scroll-inverter";
+            #binding-cells = <0>;
+            cmd = <0>;
+        };
+
+        scrl_inv_nor: scrl_inv_nor {
+            compatible = "zmk,behavior-scroll-inverter";
+            #binding-cells = <0>;
+            cmd = <1>;
+        };
+
+        scrl_inv_inv: scrl_inv_inv {
+            compatible = "zmk,behavior-scroll-inverter";
+            #binding-cells = <0>;
+            cmd = <2>;
         };
     };
 };
