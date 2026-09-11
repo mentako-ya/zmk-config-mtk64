@@ -1,0 +1,22 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Behavior to control trackball scroll inversion state
+
+compatible: "zmk,behavior-scroll-inverter"
+
+include: zero_param.yaml
+
+properties:
+  cmd:
+    type: int
+    required: true
+    enum:
+      - 0 # TOG
+      - 1 # NORMAL
+      - 2 # INVERTED
+    description: |
+      Command type:
+      0: Toggle scroll inversion state
+      1: Set normal scroll
+      2: Set inverted scroll

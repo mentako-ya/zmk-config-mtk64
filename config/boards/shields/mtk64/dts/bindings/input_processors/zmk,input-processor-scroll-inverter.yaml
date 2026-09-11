@@ -1,0 +1,8 @@
+# Copyright (c) 2026 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Input Processor for inverting trackball scroll direction
+
+compatible: "zmk,input-processor-scroll-inverter"
+
+include: ip_zero_param.yaml

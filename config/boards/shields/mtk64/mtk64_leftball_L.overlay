@@ -8,6 +8,7 @@
     };
 };
 
+
 &spi0 {
     status = "okay";
 };
