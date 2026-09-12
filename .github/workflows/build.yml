@@ -46,7 +46,26 @@ jobs:
           fi
 
           # --------------------------------------------------------------------
-          # パッケージ 2: ドングル接続 (OLED付きドングル Central + 左右手 1000Hz ESB Peripheral)
+          # パッケージ 2: ドングル接続 (OLEDなしドングル Central + 左右手 + フット 1000Hz ESB Peripheral)
+          # 【役割・構成】
+          # - ドングル (mtk64_DONGLE.uf2): ESB Central (PCとUSB接続、ZMK Studio対応)
+          # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
+          # - 左手 (mtk64_L_dongle.uf2): ESB Peripheral ID:1 (エンコーダー＋キー、1000Hz ESB送信)
+          # - フット (mtk64_FOOT.uf2): ESB Peripheral ID:3 (フットスイッチ、1000Hz ESB送信)
+          # --------------------------------------------------------------------
+          if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ] && [ -f "mtk64_FOOT_dongle.uf2" ]; then
+            mkdir -p pkg_dongle_nodisp_foot
+            cp mtk64_DONGLE.uf2 pkg_dongle_nodisp_foot/
+            cp mtk64_R_dongle.uf2 pkg_dongle_nodisp_foot/
+            cp mtk64_L_dongle.uf2 pkg_dongle_nodisp_foot/
+            cp mtk64_FOOT_dongle.uf2 pkg_dongle_nodisp_foot/mtk64_FOOT.uf2
+            cp settings_reset.uf2 pkg_dongle_nodisp_foot/ 2>/dev/null || true
+            (cd pkg_dongle_nodisp_foot && zip -q "../../mtk64ebt_Right_Left_Dongle_foot.zip" *.uf2)
+            rm -rf pkg_dongle_nodisp_foot
+          fi
+
+          # --------------------------------------------------------------------
+          # パッケージ 3: ドングル接続 (OLED付きドングル Central + 左右手 1000Hz ESB Peripheral)
           # 【役割・構成】
           # - ドングル (mtk64_DONGLE_display.uf2): ESB Central (OLED表示: レイヤー/BongoCat/WPM/モディファイア)
           # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
@@ -57,7 +76,7 @@ jobs:
           fi
 
           # --------------------------------------------------------------------
-          # パッケージ 3: ドングル接続 (ドングル Central + 左右手 1000Hz ESB Peripheral)
+          # パッケージ 4: ドングル接続 (ドングル Central + 左右手 1000Hz ESB Peripheral)
           # 【役割・構成】
           # - ドングル (mtk64_DONGLE.uf2): ESB Central (PCとUSB接続、ZMK Studio対応)
           # - 右手 (mtk64_R_dongle.uf2): ESB Peripheral ID:2 (トラックボール＋キー、1000Hz ESB送信)
@@ -68,7 +87,7 @@ jobs:
           fi
 
           # --------------------------------------------------------------------
-          # パッケージ 4: 変則構成 (左手ボール / 右手エンコーダー + OLED付きドングル)
+          # パッケージ 5: 変則構成 (左手ボール / 右手エンコーダー + OLED付きドングル)
           # 【役割・構成】
           # - ドングル (mtk64_DONGLE_display.uf2): ESB Central
           # - 左手 (mtk64_L_leftball.uf2): ESB Peripheral ID:1 (トラックボール＋キー、1000Hz ESB送信)

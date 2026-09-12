@@ -29,6 +29,7 @@ mtk64ebt Rev4 用の ZMK ファームウェアリポジトリです。
   * `mtk64ebt_Right_Left_Foot_leftball.zip`（左ボール＋フット）
 * **[`right_left_dongle_rev4`](https://github.com/mentako-ya/zmk-config-mtk64/tree/right_left_dongle_rev4)**（1000Hz 超低遅延 ESB ドングル接続）
   * `mtk64ebt_Right_Left_Dongle_disp_foot.zip`（左右＋ドングルOLED＋フット）
+  * `mtk64ebt_Right_Left_Dongle_foot.zip`（左右＋ドングル画面なし＋フット）
   * `mtk64ebt_Right_Left_Dongle_display.zip`（左右＋ドングルOLED）
   * `mtk64ebt_Right_Left_Dongle.zip`（左右＋ドングル画面なし）
   * `mtk64ebt_Right_Left_Dongle_disp_leftball.zip`（左ボール右エンコーダー＋ドングルOLED）
@@ -85,11 +86,13 @@ PC に接続した専用 USB ドングルを Central 親機とし、左右キー
 * **提供ファームウェアパッケージ (ZIP)**:
   1. **左右＋ドングルOLED＋フット**: `mtk64ebt_Right_Left_Dongle_disp_foot.zip`
      - 含まれるファイル: `mtk64_DONGLE_display.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L_dongle.uf2`, `mtk64_FOOT_dongle.uf2`, `settings_reset.uf2`
-  2. **左右＋ドングルOLED**: `mtk64ebt_Right_Left_Dongle_display.zip`
+  2. **左右＋ドングル（画面なし）＋フット**: `mtk64ebt_Right_Left_Dongle_foot.zip`
+     - 含まれるファイル: `mtk64_DONGLE.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L_dongle.uf2`, `mtk64_FOOT_dongle.uf2`, `settings_reset.uf2`
+  3. **左右＋ドングルOLED**: `mtk64ebt_Right_Left_Dongle_display.zip`
      - 含まれるファイル: `mtk64_DONGLE_display.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L_dongle.uf2`, `settings_reset.uf2`
-  3. **左右＋ドングル（画面なし）**: `mtk64ebt_Right_Left_Dongle.zip`
+  4. **左右＋ドングル（画面なし）**: `mtk64ebt_Right_Left_Dongle.zip`
      - 含まれるファイル: `mtk64_DONGLE.uf2`, `mtk64_R_dongle.uf2`, `mtk64_L_dongle.uf2`, `settings_reset.uf2`
-  4. **左ボール右エンコーダー＋ドングルOLED**: `mtk64ebt_Right_Left_Dongle_disp_leftball.zip`
+  5. **左ボール右エンコーダー＋ドングルOLED**: `mtk64ebt_Right_Left_Dongle_disp_leftball.zip`
      - 含まれるファイル: `mtk64_DONGLE_display.uf2`, `mtk64_L_leftball.uf2`, `mtk64_R_leftball.uf2`, `settings_reset.uf2`
 
 #### ドングル接続の特長

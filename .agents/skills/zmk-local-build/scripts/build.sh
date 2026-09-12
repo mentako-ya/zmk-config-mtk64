@@ -31,6 +31,7 @@ build_dongle() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/dongle_display -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_DONGLE rgbled_adapter dongle_display" \
@@ -47,12 +48,14 @@ build_dongle_nodisplay() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/dongle -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_DONGLE rgbled_adapter" \
       -DZMK_CONFIG="${REPO_ROOT}/config" \
       -DSNIPPET="studio-rpc-usb-uart" \
-      -DCONFIG_ZMK_STUDIO=y
+      -DCONFIG_ZMK_STUDIO=y \
+      -DCONFIG_ZMK_DISPLAY=n
     cp "${WORKSPACE}/build/dongle/zephyr/zmk.uf2" "${OUTPUT_DIR}/mtk64_DONGLE.uf2"
     echo "-> Dongle (no display) firmware built: ${OUTPUT_DIR}/mtk64_DONGLE.uf2"
 }
@@ -66,6 +69,7 @@ build_right_dongle() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/right_dongle -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_R rgbled_adapter" \
@@ -85,6 +89,7 @@ build_left_dongle() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/left_dongle -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_L rgbled_adapter" \
@@ -104,6 +109,7 @@ build_foot_dongle() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/foot_dongle -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_FOOT rgbled_adapter" \
@@ -126,6 +132,7 @@ build_leftball_l() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/leftball_l -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_leftball_L rgbled_adapter" \
@@ -145,6 +152,7 @@ build_leftball_r() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/leftball_r -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="mtk64_leftball_R rgbled_adapter" \
@@ -167,6 +175,7 @@ build_reset() {
     ZEPHYR_TOOLCHAIN_VARIANT=zephyr \
     ZEPHYR_SDK_INSTALL_DIR="$SDK_PATH" \
     west build -p -d build/reset -b xiao_ble//zmk -s zmk/app -- \
+      -DPython3_EXECUTABLE="/Users/tools/.pyenv/versions/3.13.5/bin/python3.13" \
       -DZephyr-sdk_DIR="$SDK_DIR" \
       -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/arm-none-eabi-g++ \
       -DSHIELD="settings_reset" \
@@ -178,8 +187,23 @@ build_reset() {
 case "$TARGET" in
     dongle|DONGLE)
         build_dongle
+        build_dongle_nodisplay
         build_right_dongle
         build_left_dongle
+        ;;
+    disp_foot|dongle_disp_foot)
+        build_dongle
+        build_right_dongle
+        build_left_dongle
+        build_foot_dongle
+        build_reset
+        ;;
+    dongle_foot|foot_dongle|nodisp_foot)
+        build_dongle_nodisplay
+        build_right_dongle
+        build_left_dongle
+        build_foot_dongle
+        build_reset
         ;;
     dongle_nodisplay)
         build_dongle_nodisplay
@@ -191,7 +215,7 @@ case "$TARGET" in
         build_leftball_r
         build_dongle
         ;;
-    foot|FOOT|foot_dongle)
+    foot|FOOT)
         build_foot_dongle
         ;;
     reset)
@@ -209,13 +233,13 @@ case "$TARGET" in
         ;;
     *)
         echo "Unknown target: $TARGET"
-        echo "Options: all, dongle, dongle_nodisplay, leftball, foot, reset"
+        echo "Options: all, dongle, dongle_nodisplay, disp_foot, dongle_foot, leftball, foot, reset"
         exit 1
         ;;
 esac
 
 package_zips() {
-    echo "=== Packaging Firmware ZIPs (4 Dongle Configurations) ==="
+    echo "=== Packaging Firmware ZIPs (5 Dongle Configurations) ==="
     cd "$OUTPUT_DIR"
 
     # 1. Right + Left + Dongle (with OLED display) + Foot
@@ -226,25 +250,43 @@ package_zips() {
         cp mtk64_L_dongle.uf2 pkg_dongle_foot/
         cp mtk64_FOOT_dongle.uf2 pkg_dongle_foot/mtk64_FOOT.uf2
         cp settings_reset.uf2 pkg_dongle_foot/ 2>/dev/null || true
+        rm -f "mtk64ebt_Right_Left_Dongle_disp_foot.zip"
         (cd pkg_dongle_foot && zip -q "../mtk64ebt_Right_Left_Dongle_disp_foot.zip" *.uf2)
         rm -rf pkg_dongle_foot
         echo "-> Packaged: ${OUTPUT_DIR}/mtk64ebt_Right_Left_Dongle_disp_foot.zip"
     fi
 
-    # 2. Right + Left + Dongle (with OLED display)
+    # 2. Right + Left + Dongle (no OLED) + Foot
+    if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ] && [ -f "mtk64_FOOT_dongle.uf2" ]; then
+        mkdir -p pkg_dongle_nodisp_foot
+        cp mtk64_DONGLE.uf2 pkg_dongle_nodisp_foot/
+        cp mtk64_R_dongle.uf2 pkg_dongle_nodisp_foot/
+        cp mtk64_L_dongle.uf2 pkg_dongle_nodisp_foot/
+        cp mtk64_FOOT_dongle.uf2 pkg_dongle_nodisp_foot/mtk64_FOOT.uf2
+        cp settings_reset.uf2 pkg_dongle_nodisp_foot/ 2>/dev/null || true
+        rm -f "mtk64ebt_Right_Left_Dongle_foot.zip"
+        (cd pkg_dongle_nodisp_foot && zip -q "../mtk64ebt_Right_Left_Dongle_foot.zip" *.uf2)
+        rm -rf pkg_dongle_nodisp_foot
+        echo "-> Packaged: ${OUTPUT_DIR}/mtk64ebt_Right_Left_Dongle_foot.zip"
+    fi
+
+    # 3. Right + Left + Dongle (with OLED display)
     if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ]; then
+        rm -f "mtk64ebt_Right_Left_Dongle_display.zip"
         zip -q "mtk64ebt_Right_Left_Dongle_display.zip" mtk64_DONGLE_display.uf2 mtk64_R_dongle.uf2 mtk64_L_dongle.uf2 settings_reset.uf2 2>/dev/null || true
         echo "-> Packaged: ${OUTPUT_DIR}/mtk64ebt_Right_Left_Dongle_display.zip"
     fi
 
-    # 3. Right + Left + Dongle (no OLED)
+    # 4. Right + Left + Dongle (no OLED)
     if [ -f "mtk64_DONGLE.uf2" ] && [ -f "mtk64_R_dongle.uf2" ] && [ -f "mtk64_L_dongle.uf2" ]; then
+        rm -f "mtk64ebt_Right_Left_Dongle.zip"
         zip -q "mtk64ebt_Right_Left_Dongle.zip" mtk64_DONGLE.uf2 mtk64_R_dongle.uf2 mtk64_L_dongle.uf2 settings_reset.uf2 2>/dev/null || true
         echo "-> Packaged: ${OUTPUT_DIR}/mtk64ebt_Right_Left_Dongle.zip"
     fi
 
-    # 4. Left-ball + Right-encoder + Dongle (with OLED)
+    # 5. Left-ball + Right-encoder + Dongle (with OLED)
     if [ -f "mtk64_DONGLE_display.uf2" ] && [ -f "mtk64_L_leftball.uf2" ] && [ -f "mtk64_R_leftball.uf2" ]; then
+        rm -f "mtk64ebt_Right_Left_Dongle_disp_leftball.zip"
         zip -q "mtk64ebt_Right_Left_Dongle_disp_leftball.zip" mtk64_DONGLE_display.uf2 mtk64_L_leftball.uf2 mtk64_R_leftball.uf2 settings_reset.uf2 2>/dev/null || true
         echo "-> Packaged: ${OUTPUT_DIR}/mtk64ebt_Right_Left_Dongle_disp_leftball.zip"
     fi

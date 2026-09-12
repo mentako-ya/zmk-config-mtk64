@@ -39,7 +39,7 @@
         res-cpi = <1558>;
         zephyr,axis-x = <INPUT_REL_X>;
         zephyr,axis-y = <INPUT_REL_Y>;
-        // force-awake;
+        force-awake;
     };
 };
 
@@ -57,7 +57,19 @@
         };
     };
 
+    behaviors {
+        cpi_inc: cpi_inc {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <0>;
+        };
 
+        cpi_dec: cpi_dec {
+            compatible = "zmk,behavior-paw32xx-cpi";
+            #binding-cells = <0>;
+            cmd = <1>;
+        };
+    };
 
     metadata {
         studio_cpi_inc: studio_cpi_inc {
